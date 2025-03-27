@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-//import localFont from "next/font/local";
 
 import { MouseEvent, useEffect, useState } from "react";
 
@@ -14,8 +13,10 @@ import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
 
 // Constants
-import thingItems from "@/constants/things.json";
-import thoughtItems from "@/constants/thoughts.json";
+import myThingItems from "@/constants/myThings.json";
+import otherThingItems from "@/constants/otherThings.json"
+import myThoughtItems from "@/constants/myThoughts.json";
+import otherThoughtItems from "@/constants/otherThoughts.json"
 
 // Motion
 import { motion as m } from "motion/react";
@@ -24,18 +25,6 @@ import { AnimatePresence } from "motion/react";
 // Styles
 import styles from "./Home.module.css";
 import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
-
-/*
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});*/
 
 export default function Home() {
   const [showArrow, setShowArrow] = useState(false);
@@ -251,7 +240,7 @@ export default function Home() {
 
         {/* About section */}
         <HomeSection id="about" heading="*about" className="pb-2">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 pt-4 pb-8">
             <div>
               <h4 className="text-2xl font-bold italic text-neutral-800 pb-2">
                 Who is Seb?
@@ -339,14 +328,14 @@ export default function Home() {
         {/* Things section */}
         <HomeSection id="things" heading="*things" className="pb-2">
           {/* My things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-6 pb-3">
+          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
             My projects, work, art, hobbies, and more
           </h4>
           <div className="px-9">
-            <List items={thingItems} seeMoreHref={"/things"} />
+            <List items={myThingItems} seeMoreHref={"/things"} />
           </div>
           {/* Not my things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-6 pb-3">
+          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
             Other cool things I found online
           </h4>
         </HomeSection>
@@ -354,11 +343,17 @@ export default function Home() {
         {/* Thoughts section */}
         <HomeSection id="thoughts" heading="*thoughts" className="pb-2">
           {/* Subtitle */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-6 pb-3">
+          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
             Rambles from my soapbox
           </h4>
           <div className="px-9">
-            <List items={thoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
+            <List items={myThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
+          </div>
+          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
+            Articles, essays, and more that I enjoyed reading
+          </h4>
+          <div className="px-9">
+            <List items={otherThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
           </div>
         </HomeSection>
 

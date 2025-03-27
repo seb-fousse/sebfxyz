@@ -18,6 +18,8 @@ export default function ListItem({ title, subtitle, href }: Props) {
   const [waveText, setWaveText] = useState<string>(generateLineString(128));
   const [isHovering, setIsHovering] = useState(false);
 
+  const isExternal = href.includes('https://') || href.includes('http://');
+
   useEffect(() => {
     let scrambleInterval: number | undefined;
 
@@ -38,7 +40,7 @@ export default function ListItem({ title, subtitle, href }: Props) {
   }, [isHovering]);
 
   return (
-    <Link className="hover:no-underline hover:font-bold" href={href}>
+    <Link className="hover:no-underline hover:font-bold" href={href} target={isExternal ? '_blank' : '_self'}>
       <motion.div
         className="flex flex-grow items-center pt-1 pb-1 font-mono cursor-pointer"
         onMouseEnter={() => {setWaveText(generateWaveString(15)); setIsHovering(true)}}
