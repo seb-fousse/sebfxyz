@@ -79,7 +79,7 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
         console.warn(`Element with index ${index} not found`);
       }
     });
-  }, []);
+  }, [data]);
 
   const handleDragStart = (e: globalThis.MouseEvent) => {
     const target = e.target as HTMLElement;
