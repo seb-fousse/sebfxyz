@@ -315,7 +315,7 @@ export default function Home() {
                 It&apos;s my digital scrapbook. A junk yard for me to dump
                 things I make, write, or find online. The internet should be a 
                 terrible mess of custom made pages & projects, and this site aims 
-                to add to that trash pile. Keep the web weird.
+                to add to that trash pile. Keep the web weird!
               </p>
             </div>
             <div>
