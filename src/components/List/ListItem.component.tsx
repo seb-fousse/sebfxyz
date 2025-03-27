@@ -1,0 +1,70 @@
+import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  href: string;
+}
+
+const generateWaveString = (length: number) =>
+  Array.from({ length }, () => '⋅.˳˳.⋅ॱ˙˙ॱ').join("");
+
+const generateLineString = (length: number) =>
+  Array.from({ length }, () => '-').join("");
+
+export default function ListItem({ title, subtitle, href }: Props) {
+  const [waveText, setWaveText] = useState<string>(generateLineString(128));
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    let scrambleInterval: number | undefined;
+
+    if (isHovering) {
+      scrambleInterval = window.setInterval(() => {
+        setWaveText(prevText => prevText.slice(-1) + prevText.slice(0, -1));
+      }, 33); // approx 30fps
+    } else if (scrambleInterval !== undefined) {
+      window.clearInterval(scrambleInterval);
+    }
+
+    return () => {
+      if (scrambleInterval !== undefined) {
+        clearInterval(scrambleInterval);
+        setWaveText(generateLineString(128)); // Reset text when hover stops
+      }
+    };
+  }, [isHovering]);
+
+  return (
+    <Link className="hover:no-underline hover:font-bold" href={href}>
+      <motion.div
+        className="flex flex-grow items-center pt-1 pb-1 font-mono cursor-pointer"
+        onMouseEnter={() => {setWaveText(generateWaveString(15)); setIsHovering(true)}}
+        onMouseLeave={() => setIsHovering(false)}
+        whileHover={{ x: 40 }} // Moves right on hover
+        transition={{ type: "spring", stiffness: 200, damping: 50 }}
+      >
+      
+        {/* Full-width view */}
+        <div className="hidden md:flex items-center justify-between w-full">
+          <span className="text-base text-nowrap mr-[10px]">{title}</span>
+          <span
+            className="flex-grow text-center text-base whitespace-nowrap overflow-hidden"
+          >
+            {waveText || generateLineString(128)}
+          </span>
+          <span className="text-base text-nowrap ml-[10px]">{subtitle}</span>
+        </div>
+
+        {/* Mobile view */}
+        <div className="flex md:hidden items-center justify-between w-full">
+          <span className="text-base truncate">{title}</span>
+          <span>&rarr;</span>
+        </div>
+      
+      </motion.div>
+    </Link>
+  );
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Musing Man Winkle",
+    "subtitle": "Audio-visual portrait made with StyleGAN2 and 900 childhood photos",
+    "href": "/"
+  },
+  {
+    "title": "Song Visualizers",
+    "subtitle": "StyleGAN2 generated video synced to audio",
+    "href": "/"
+  },
+  {
+    "title": "Stereoscopic Images",
+    "subtitle": "Taken on Nimslo and Nishika N8000",
+    "href": "/"
+  },
+  {
+    "title": "Peru 2024",
+    "subtitle": "Photos taken on a 5 day hike to Machu Picchu",
+    "href": "/"
+  },
+  {
+    "title": "35mm B&W Film",
+    "subtitle": "Self loaded film, shot on Pentax K1000, darkroom developed",
+    "href": "/"
+  },
+  {
+    "title": "35mm Color Film",
+    "subtitle": "Taken on Contax RTS II, Pentax K1000, and various point & shoots",
+    "href": "/"
+  },
+  {
+    "title": "Paintings & Collages",
+    "subtitle": "Selection of artwork from 2019",
+    "href": "/things/art"
+  },
+  {
+    "title": "Hiking With Dad",
+    "subtitle": "Dad-themed chatbot that provides a packing list for a hike",
+    "href": "/"
+  },
+  {
+    "title": "BeanKrypt",
+    "subtitle": "Steganography using Python & Flask",
+    "href": "/"
+  },
+  {
+    "title": "Project 3",
+    "subtitle": "Description 3",
+    "href": "/"
+  }
+]

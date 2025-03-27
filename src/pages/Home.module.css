@@ -1,0 +1,26 @@
+/* CSS for spash-page name hover effect */
+
+.extra {
+  display:inline-block;
+  opacity: 0.1;
+  transition: 0.3s;
+  color: orange;
+}
+
+.firstName:hover .extra {
+  opacity: 1;
+}
+
+.firstName:hover > [class*=extra] {
+  background: linear-gradient(
+    to right,
+    orange,
+    tomato,
+    tomato,
+    orange
+  );
+  background-size: 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: background-pan 20s linear infinite;
+}
