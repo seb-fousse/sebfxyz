@@ -8,6 +8,7 @@ export default function Art() {
       subtitle="click & drag images" 
       data={data} 
       delay={1.5}
+      returnHref='/#things'
     />
   );
 }

@@ -7,7 +7,7 @@
   {
     "title": "Song Visualizers",
     "subtitle": "StyleGAN2 generated video synced to audio",
-    "href": "/"
+    "href": "/things/song-visualizers/"
   },
   {
     "title": "Stereoscopic Images",
@@ -37,12 +37,12 @@
   {
     "title": "Hiking With Dad",
     "subtitle": "Dad-themed chatbot that provides a packing list for a hike",
-    "href": "/"
+    "href": "https://github.com/seb-fousse/hiking-with-dad"
   },
   {
     "title": "BeanKrypt",
     "subtitle": "Steganography using Python & Flask",
-    "href": "/"
+    "href": "https://github.com/seb-fousse/BeanKrypt"
   },
   {
     "title": "Project 3",
