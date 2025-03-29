@@ -1,5 +1,6 @@
 import { Children, useEffect, useRef, useState, ReactNode, MouseEvent } from "react";
 import Image from 'next/image';
+import Link from "next/link";
 
 // Config
 import resolveConfig from "tailwindcss/resolveConfig";
@@ -220,12 +221,19 @@ interface ShuffledGalleryProps {
   subtitle: string;
   data: IImageData[];
   delay: number;
+  returnHref: string;
 }
 
-function ShuffledGallery({ title, subtitle, data, delay }: ShuffledGalleryProps) {
+function ShuffledGallery({ title, subtitle, data, delay, returnHref }: ShuffledGalleryProps) {
   return (
     <ImageShuffle data={data} delay={delay}>
       <section className="grid h-screen w-screen place-content-center cursor-default">
+        <Link
+          className="absolute top-5 left-5 text-xl sm:text-3xl hover:no-underline text-neutral-700 font-extralight"
+          href={returnHref}
+        >
+          &larr;
+        </Link>
         <div className="items-center align-middle gap-2 text-wrap text-center m-24">
           <p className="text-xl font-bold uppercase text-neutral-800">
             {title}

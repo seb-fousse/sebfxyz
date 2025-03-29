@@ -14,7 +14,6 @@ import LocalWeather from "@/components/Weather/LocalWeather.component";
 
 // Constants
 import myThingItems from "@/constants/myThings.json";
-import otherThingItems from "@/constants/otherThings.json"
 import myThoughtItems from "@/constants/myThoughts.json";
 import otherThoughtItems from "@/constants/otherThoughts.json"
 
@@ -25,6 +24,8 @@ import { AnimatePresence } from "motion/react";
 // Styles
 import styles from "./Home.module.css";
 import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
+import ListItem from "@/components/List/ListItem.component";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 export default function Home() {
   const [showArrow, setShowArrow] = useState(false);
@@ -133,6 +134,12 @@ export default function Home() {
       </Head>
 
       <div className="max-w-7xl m-auto">
+
+        {/* Theme toggle */}
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle />
+        </div>
+
         {/* Splash section */}
         <section
           id="splash"
@@ -157,7 +164,7 @@ export default function Home() {
             {/* Title and links */}
             <m.div
               id="title-and-menu"
-              className="absolute bottom-0 left-0 sm:relative text-neutral-800 px-4 lg:px-8 lg:mx-28 xl:mx-0"
+              className="absolute bottom-0 left-0 sm:relative text-neutral-800 dark:text-orange-100 px-4 lg:px-8 lg:mx-28 xl:mx-0"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -239,14 +246,14 @@ export default function Home() {
         </AnimatePresence>
 
         {/* About section */}
-        <HomeSection id="about" heading="*about" className="pb-2">
+        <HomeSection id="about" heading="*about" className="pb-2 text-neutral-800 dark:text-orange-100">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 pt-4 pb-8">
             <div>
-              <h4 className="text-2xl font-bold italic text-neutral-800 pb-2">
+              <h4 className="text-2xl font-bold italic pb-2">
                 Who is Seb?
               </h4>
               <HoverPopup text="Globetrotting multi-citizen">
-                <div className="p-2 bg-neutral-800 text-orange-50 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
                   London born-n-bred! American, British, and French passport holder
                 </div>
               </HoverPopup>
@@ -262,13 +269,13 @@ export default function Home() {
               </HoverPopup>
               ,&nbsp;
               <HoverPopup text="Brooklyn based">
-                <div className="p-2 bg-neutral-800 text-orange-50 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
                   <LocalWeather />
                 </div>
               </HoverPopup>
               ,&nbsp;
               <HoverPopup text="hobby hopper">
-                <div className="p-2 bg-neutral-800 text-orange-50 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
                   Jack of some trades, master of fewer
                 </div>
               </HoverPopup>
@@ -288,7 +295,7 @@ export default function Home() {
               <HoverPopup text="terminally online" />
               ,&nbsp;
               <HoverPopup text="music appreciator">
-                <div className="p-2 bg-neutral-800 text-orange-50 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
                   <RecentlyListened />
                 </div>
               </HoverPopup>
@@ -297,7 +304,7 @@ export default function Home() {
               , and other things that make me, <span className="italic">me</span>.
             </div>
             <div>
-              <h4 className="text-2xl font-bold italic text-neutral-800 pb-2">
+              <h4 className="text-2xl font-bold italicpb-2">
                 What is this website?
               </h4>
               <p>
@@ -308,7 +315,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <h4 className="text-2xl font-bold italic text-neutral-800 pb-2">
+              <h4 className="text-2xl font-bold italic  pb-2">
                 Are you a recruiter?
               </h4>
               <p>
@@ -328,29 +335,33 @@ export default function Home() {
         {/* Things section */}
         <HomeSection id="things" heading="*things" className="pb-2">
           {/* My things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
             My projects, work, art, hobbies, and more
           </h4>
           <div className="px-9">
             <List items={myThingItems} seeMoreHref={"/things"} />
           </div>
           {/* Not my things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
-            Other cool things I found online
+          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+            Other cool stuff I found online
           </h4>
+          <div className="px-9">
+            <ListItem title="See all" subtitle="Check it all out" href={""} />
+            <ListItem title="Random" subtitle="Roll the dice" href={"/random"} random/>
+          </div>
         </HomeSection>
 
         {/* Thoughts section */}
         <HomeSection id="thoughts" heading="*thoughts" className="pb-2">
           {/* Subtitle */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
             Rambles from my soapbox
           </h4>
           <div className="px-9">
             <List items={myThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
           </div>
-          <h4 className="text-2xl font-bold italic text-neutral-800 px-9 pt-4 pb-3">
-            Articles, essays, and more that I enjoyed reading
+          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+            Articles, essays, and stories that I enjoyed reading
           </h4>
           <div className="px-9">
             <List items={otherThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
@@ -359,7 +370,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6 text-neutral-800">
+          <div className="flex space-x-6 text-neutral-800 dark:text-orange-100">
             <a href="mailto:me@sebf.xyz">Email</a>
             <a
               href="https://github.com/seb-fousse"

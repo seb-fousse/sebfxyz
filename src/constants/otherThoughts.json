@@ -2,17 +2,30 @@
   {
     "title": "The Grug Brained Developer",
     "subtitle": "A layman's guide to thinking like the self-aware smol brained",
-    "href": "https://grugbrain.dev/"
+    "href": "https://grugbrain.dev/",
+    "tags": [""],
+    "type": "article"
   },
   {
-    "title": "This is Water",
-    "subtitle": "Commencement speech by David Foster Wallace",
-    "href": "https://fs.blog/david-foster-wallace-this-is-water/"
+    "title": "This is Water - David Foster Wallace",
+    "subtitle": "Kenyon College 2005 commencement speech",
+    "href": "https://fs.blog/david-foster-wallace-this-is-water/",
+    "tags": [""],
+    "type": "speech"
   },
   {
-    "title": "The Egg",
-    "subtitle": "Written by Andy Weir",
-    "href": "https://www.galactanet.com/oneoff/theegg_mod.html"
+    "title": "The Egg - Andy Weir",
+    "subtitle": "You die and come into contact with god",
+    "href": "https://www.galactanet.com/oneoff/theegg_mod.html",
+    "tags": [""],
+    "type": "short story"
+  },
+  {
+    "title": "From the Lost Diary of TreeFrog7 - Nnedi Okorafor",
+    "subtitle": "Sci-fi short story set in a jungle",
+    "href": "https://clarkesworldmagazine.com/okorafor_05_09/",
+    "tags": [""],
+    "type": "short story"
   }
 ]
 
