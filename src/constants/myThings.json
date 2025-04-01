@@ -32,7 +32,7 @@
   {
     "title": "Paintings & Collages",
     "subtitle": "Selection of artwork from 2019",
-    "href": "/things/art"
+    "href": "/things/art-2019"
   },
   {
     "title": "Hiking With Dad",
@@ -43,10 +43,5 @@
     "title": "BeanKrypt",
     "subtitle": "Steganography using Python & Flask",
     "href": "https://github.com/seb-fousse/BeanKrypt"
-  },
-  {
-    "title": "Project 3",
-    "subtitle": "Description 3",
-    "href": "/"
   }
 ]

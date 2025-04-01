@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion as m } from "motion/react";
 import { Play } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 const videosAndThumb = [
   ["dW0Fn2O8lLY", "turnmills"],
@@ -15,7 +16,7 @@ const videosAndThumb = [
   ["0fCdkjIAM3A", "vegyn"],
 ];
 
-const VideoGrid: React.FC = () => {
+export default function SongVisualizers() {
   const [activeVideos, setActiveVideos] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
@@ -29,6 +30,10 @@ const VideoGrid: React.FC = () => {
 
   return (
     <div className="max-w-7xl m-auto">
+      {/* Theme toggle */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {videosAndThumb.map((videosAndThumb, index) => (
           <m.div 
@@ -43,7 +48,6 @@ const VideoGrid: React.FC = () => {
                 className="w-full h-full"
                 src={`https://www.youtube.com/embed/${videosAndThumb[0]}?autoplay=1`}
                 title="YouTube video player"
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
@@ -60,7 +64,7 @@ const VideoGrid: React.FC = () => {
                   height="512"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Play className="w-8 h-8 text-orange-50" />
+                  <Play className="w-8 h-8 text-orange-50 dark:text-neutral-900" />
                 </div>
               </div>
             )}
@@ -70,5 +74,3 @@ const VideoGrid: React.FC = () => {
     </div>
   );
 };
-
-export default VideoGrid;

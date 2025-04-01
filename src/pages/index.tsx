@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import TypewriterComponent from "typewriter-effect";
@@ -52,20 +52,15 @@ export default function Home() {
     },
   };
 
-  // https://reacthustle.com/blog/nextjs-scroll-to-element
-  const handleScroll = (e: MouseEvent<HTMLAnchorElement>) => {
-    // first prevent the default behavior
-    e.preventDefault();
-    // get the href and remove everything before the hash (#)
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    // get the element by id and use scrollIntoView
-    const elem = document.getElementById(targetId);
-    window.scrollTo({
-      top: elem?.getBoundingClientRect().top,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, []);
 
   // Used to present the user with a down arrow if they've been at the top for 6+ seconds
   useEffect(() => {
@@ -213,17 +208,14 @@ export default function Home() {
                   <ExplodingTextLink
                     text="*about"
                     href="#about"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                   <ExplodingTextLink
                     text="*things"
                     href="#things"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                   <ExplodingTextLink
                     text="*thoughts"
                     href="#thoughts"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                 </div>
               </m.div>
@@ -235,7 +227,7 @@ export default function Home() {
         <AnimatePresence>
           {showArrow && (
             <m.div
-              className="fixed bottom-5 right-5 sm:right-1/2 sm:-translate-x-1/2 m-1 md:m-3 text-5xl animate-bounce"
+              className="fixed bottom-5 right-5 sm:right-1/2 sm:-translate-x-1/2 m-1 md:m-3 text-4xl animate-bounce text-neutral-800 dark:text-orange-100"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
