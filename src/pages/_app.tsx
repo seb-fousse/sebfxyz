@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import "../styles/globals.css";
-import { ThemeProvider } from "@/context/theme-context";
+import { ThemeProvider } from "next-themes";
 
 const variants = {
   initial: { opacity: 0 },
@@ -43,7 +43,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <AnimatePresence mode="wait">
         <motion.div key={router.route} variants={variants} initial="initial" animate="animate" exit="exit">
           <Component {...pageProps} />

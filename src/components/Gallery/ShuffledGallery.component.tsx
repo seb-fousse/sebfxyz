@@ -1,6 +1,5 @@
 import { Children, useEffect, useRef, useState, ReactNode, MouseEvent } from "react";
 import Image from 'next/image';
-import Link from "next/link";
 
 // Config
 import resolveConfig from "tailwindcss/resolveConfig";
@@ -12,6 +11,7 @@ import { AnimatePresence, motion as m } from "motion/react";
 // Types
 import { IImageData } from "@/types/imageData.type";
 import ThemeToggle from "../ThemeToggle/ThemeToggle.component";
+import BackButton from "../Buttons/BackButton";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -182,7 +182,7 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
               className="flex flex-col fixed justify-center items-center text-center inset-0 z-[10001] p-16"
             >
               <m.button
-                className="absolute top-4 right-4 text-xl font-bold p-2 text-neutral-800 dark:text-orange-100"
+                className="absolute top-4 right-4 text-xl font-bold p-2"
                 onClick={() => setImageForModal(null)}
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -208,7 +208,7 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
               animate={{ opacity: 0.75 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[10000] bg-white dark:bg-black"
+              className="fixed inset-0 z-[10000] bg-background"
             />
           </div>
         ) : null}
@@ -233,18 +233,12 @@ function ShuffledGallery({ title, subtitle, data, delay, returnHref }: ShuffledG
       </div>
       <ImageShuffle data={data} delay={delay}>
         <section className="grid h-screen w-screen place-content-center cursor-default">
-          <Link
-            className="absolute top-5 left-5 text-xl sm:text-3xl hover:no-underline text-neutral-800 dark:text-orange-100 font-extralight"
-            href={returnHref}
-            scroll={false}
-          >
-            &larr;
-          </Link>
+          <BackButton className="absolute top-5 left-5" href={returnHref} />
           <div className="items-center align-middle gap-2 text-wrap text-center m-24">
-            <p className="text-xl font-bold uppercase text-neutral-800 dark:text-orange-100">
+            <p className="text-xl font-bold uppercase">
               {title}
             </p>
-            <p className="lowercase font-light text-neutral-600 dark:text-orange-100">{subtitle}</p>
+            <p className="lowercase font-light">{subtitle}</p>
           </div>
         </section>
       </ImageShuffle>

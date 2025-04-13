@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { motion as m } from "motion/react";
 import { Play } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
+import BackButton from "@/components/Buttons/BackButton";
+import Link from "next/link";
 
 const videosAndThumb = [
   ["dW0Fn2O8lLY", "turnmills"],
@@ -30,11 +32,17 @@ export default function SongVisualizers() {
 
   return (
     <div className="max-w-7xl m-auto">
-      {/* Theme toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
+      <BackButton className="fixed top-5 left-5 z-10" href={'/#things'} />
+      <ThemeToggle className="fixed top-5 right-5 z-10"/>
+
+      <h1 className="font-bold text-6xl p-2 lowercase">
+        *Song Visualizers
+      </h1>
+      
+      <div className="px-9 pt-4 pb-3 italic">
+        An assortment of <Link className="text-primary" href="https://github.com/NVlabs/stylegan2" target="_blank">StyleGAN2</Link> models synced to different songs I like. I trained the lava lamp model on ~800 images of lava lamps, while the remaining models were sourced from other people. <Link className="text-primary" href="https://github.com/mikael-alafriz-deel/lucid-sonic-dreams" target="_blank">Lucid Sonic Dreams</Link> was used to sync the models to audio.
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-4 px-4 md:px-9">
         {videosAndThumb.map((videosAndThumb, index) => (
           <m.div 
             key={index} 
@@ -53,7 +61,7 @@ export default function SongVisualizers() {
               ></iframe>
             ) : (
               <div
-                className="w-full h-full bg-black cursor-pointer flex items-center justify-center"
+                className="w-full h-full bg-black cursor-pointer flex items-center justify-center transition hover:invert"
                 onClick={() => handleClick(videosAndThumb[0])}
               >
                 <Image

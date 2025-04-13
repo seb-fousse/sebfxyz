@@ -1,5 +1,4 @@
 import styles from './ExplodingTextLink.module.css'
-import { MouseEventHandler } from 'react';
 
 // Reworking of this effect
 // https://www.youtube.com/watch?v=owpaafxvkjU

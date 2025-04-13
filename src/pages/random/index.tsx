@@ -48,7 +48,7 @@ export default function RandomRedirect() {
   }, [router]);
 
   return (
-    <div className="flex flex-col justify-center items-center text-center h-dvh text-neutral-800 dark:text-orange-100">
+    <div className="flex flex-col justify-center items-center text-center h-dvh">
       <div className="font-bold text-2xl">
         {currentThing.title}
       </div>
