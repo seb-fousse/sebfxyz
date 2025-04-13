@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -8,11 +9,11 @@ interface Props {
 export default function BackButton({ href, className }: Props) {
   return (
     <Link
-      className={`${className} text-xl sm:text-3xl hover:no-underline text-foreground font-extralight`}
+      className={className}
       href={href}
       scroll={false}
     >
-      &larr;
+      <ArrowLeft />
     </Link>
   )
 }

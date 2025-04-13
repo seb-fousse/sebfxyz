@@ -59,12 +59,16 @@ export default function MusingManWinkle() {
 
   // Use the smaller of calculated height or 80% of viewport height
   // Also consider mobile adjustment
-  const finalHeight = isMobile ? Math.min(calculatedHeight, 300, maxHeight) : Math.min(calculatedHeight, maxHeight)
+  const finalHeight = isMobile ? Math.min(calculatedHeight, maxHeight) : Math.min(calculatedHeight, maxHeight)
 
   return (
-    <div className="max-w-full w-full mx-auto px-4 flex flex-col" ref={containerRef}>
-      <BackButton className="fixed top-4 sm:top-3 left-5 z-10" href={'/#things'} />
-      <ThemeToggle className="fixed top-5 right-5 z-10"/>
+    <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
+      <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
+      <ThemeToggle className="fixed top-4 right-4 z-10"/>
+
+      <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
+        Peru
+      </h1>
 
       <Carousel
         opts={{
@@ -72,9 +76,9 @@ export default function MusingManWinkle() {
           skipSnaps: false,
           containScroll: "trimSnaps",
         }}
-        className="w-full justify-center"
+        className="w-full justify-center pt-4"
       >
-        <CarouselContent className="-ml-4 pt-16">
+        <CarouselContent>
           {imageData.map((image, index) => {
             // Calculate width based on aspect ratio while maintaining consistent height
             const aspectRatio = image.width / image.height
@@ -116,9 +120,8 @@ export default function MusingManWinkle() {
       </Carousel>
       
       
-      <div className="px-9 pt-3">
-        <span className="italic font-bold">Peru 2024&nbsp;</span>
-        - Photos taken on a 2 week backpacking trip. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
+      <div className="px-2 pt-3">
+        Photos taken on a 2 week backpacking trip in 2024. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
       </div>
       
     </div>
