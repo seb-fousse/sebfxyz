@@ -1,5 +1,5 @@
 import ShuffledGallery from '@/components/Gallery/ShuffledGallery.component';
-import data from '@/constants/art2019.json';
+import data from '@/constants/things/art2019.json';
 
 export default function Art() {
   return (

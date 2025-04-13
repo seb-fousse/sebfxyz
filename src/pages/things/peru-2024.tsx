@@ -1,9 +1,8 @@
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import BackButton from "@/components/Buttons/BackButton";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import artData from "@/constants/art2019.json"
+import imageData from "@/constants/things/peru2024.json"
 import Image from "next/image";
-import type { EmblaCarouselType as CarouselApi } from "embla-carousel"
 import { useEffect, useState, useRef } from "react"
 import { useMobile } from "@/hooks/use-mobile"
 
@@ -15,7 +14,7 @@ export default function MusingManWinkle() {
   const isMobile = useMobile()
 
   // Find the image with the largest aspect ratio (widest relative to height)
-  const maxAspectRatio = Math.max(...artData.map((item) => item.width / item.height))
+  const maxAspectRatio = Math.max(...imageData.map((image) => image.width / image.height))
 
   // Base height - will be adjusted based on container width
   const baseHeight = 400
@@ -64,12 +63,8 @@ export default function MusingManWinkle() {
 
   return (
     <div className="max-w-full w-full mx-auto px-4 flex flex-col" ref={containerRef}>
-      <BackButton className="fixed top-5 left-5 z-10" href={'/#things'} />
+      <BackButton className="fixed top-4 sm:top-3 left-5 z-10" href={'/#things'} />
       <ThemeToggle className="fixed top-5 right-5 z-10"/>
-
-      <h1 className="font-bold text-2xl p-2 text-center">
-        Peru 2024
-      </h1>
 
       <Carousel
         opts={{
@@ -79,10 +74,10 @@ export default function MusingManWinkle() {
         }}
         className="w-full justify-center"
       >
-        <CarouselContent className="-ml-4">
-          {artData.map((item, index) => {
+        <CarouselContent className="-ml-4 pt-16">
+          {imageData.map((image, index) => {
             // Calculate width based on aspect ratio while maintaining consistent height
-            const aspectRatio = item.width / item.height
+            const aspectRatio = image.width / image.height
             const calculatedWidth = finalHeight * aspectRatio
 
             return (
@@ -96,10 +91,10 @@ export default function MusingManWinkle() {
                   style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
                 >
                   <Image
-                    src={item.src || "/placeholder.svg"}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
                     style={{
                       height: "100%",
                       width: "100%",
@@ -118,7 +113,9 @@ export default function MusingManWinkle() {
       </Carousel>
       
       
-      <div className="px-9">
+      <div className="px-9 pt-3">
+        <span className="italic font-bold">Peru 2024&nbsp;</span>
+        - Photos taken on a 2 week backpacking trip. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
       </div>
       
     </div>
