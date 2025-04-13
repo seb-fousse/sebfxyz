@@ -91,10 +91,13 @@ export default function MusingManWinkle() {
                   style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
                 >
                   <Image
-                    src={image.src || "/placeholder.svg"}
+                    src={image.src}
                     alt={image.alt}
                     width={image.width}
                     height={image.height}
+                    placeholder="blur"
+                    blurDataURL={image.blurPlaceholder}
+                    priority={index < 5}
                     style={{
                       height: "100%",
                       width: "100%",
