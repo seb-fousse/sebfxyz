@@ -1,12 +1,29 @@
-import { useTheme } from "@/context/theme-context";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+interface Props {
+  className?: string;
+}
+
+const ThemeToggle = ({ className = "" }: Props) => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
-    <button onClick={toggleTheme} className="p-2">
-      {theme === "light" ? <Moon className="text-neutral-800" /> : <Sun className="text-orange-100" />}
+    <button
+      className={className}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      {theme === 'dark' ? <Sun /> : <Moon />}
+      <span className="sr-only">Toggle theme</span>
     </button>
   );
 };

@@ -53,12 +53,12 @@ export default function ListItem({ title, subtitle, href, random }: Props) {
 
   return (
     <Link
-      className="hover:no-underline hover:font-bold"
+      className="hover:no-underline hover:font-bold hover:text-primary"
       href={href}
       target={isExternal ? "_blank" : "_self"}
     >
       <motion.div
-        className="flex flex-grow items-center pt-1 pb-1 font-mono cursor-pointer text-neutral-800 dark:text-orange-100"
+        className="flex flex-grow items-center pt-1 pb-1 font-mono cursor-pointer"
         onMouseEnter={() => {
           setWaveText(generateWaveString(random ? 128 : 15, random));
           setIsHovering(true);

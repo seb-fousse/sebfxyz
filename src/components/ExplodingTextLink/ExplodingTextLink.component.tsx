@@ -1,5 +1,4 @@
 import styles from './ExplodingTextLink.module.css'
-import { MouseEventHandler } from 'react';
 
 // Reworking of this effect
 // https://www.youtube.com/watch?v=owpaafxvkjU
@@ -7,10 +6,9 @@ import { MouseEventHandler } from 'react';
 interface Props {
     text: string;
     href: string;
-    onClick: MouseEventHandler<HTMLAnchorElement>;
 }
 
-export default function ExplodingTextLink({ text, href, onClick }: Props) {
+export default function ExplodingTextLink({ text, href }: Props) {
 
     const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -37,7 +35,7 @@ export default function ExplodingTextLink({ text, href, onClick }: Props) {
     return (
         <div className="font-medium text-5xl">
             <div className={styles.option}>
-                <a className={styles.fancy} href={href} onClick={onClick}>
+                <a className={styles.fancy} href={href}>
                     {letterItems}
                 </a>
             </div>

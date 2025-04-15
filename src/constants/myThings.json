@@ -2,7 +2,7 @@
   {
     "title": "Musing Man Winkle",
     "subtitle": "Audio-visual portrait made with StyleGAN2 and 900 childhood photos",
-    "href": "/"
+    "href": "/things/musing-man-winkle/"
   },
   {
     "title": "Song Visualizers",
@@ -17,7 +17,7 @@
   {
     "title": "Peru 2024",
     "subtitle": "Photos taken on a 5 day hike to Machu Picchu",
-    "href": "/"
+    "href": "/things/peru-2024/"
   },
   {
     "title": "35mm B&W Film",
@@ -32,7 +32,7 @@
   {
     "title": "Paintings & Collages",
     "subtitle": "Selection of artwork from 2019",
-    "href": "/things/art"
+    "href": "/things/art-2019"
   },
   {
     "title": "Hiking With Dad",
@@ -43,10 +43,5 @@
     "title": "BeanKrypt",
     "subtitle": "Steganography using Python & Flask",
     "href": "https://github.com/seb-fousse/BeanKrypt"
-  },
-  {
-    "title": "Project 3",
-    "subtitle": "Description 3",
-    "href": "/"
   }
 ]

@@ -2,15 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import TypewriterComponent from "typewriter-effect";
 import ExplodingTextLink from "@/components/ExplodingTextLink/ExplodingTextLink.component";
-import HomeSection from "@/components/HomeSection/HomeSection.component";
+import HomeSection from "@/components/Basic/HomeSection.component";
 import List from "@/components/List/List.component";
 import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
+import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
+import ListItem from "@/components/List/ListItem.component";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 // Constants
 import myThingItems from "@/constants/myThings.json";
@@ -20,12 +23,6 @@ import otherThoughtItems from "@/constants/otherThoughts.json"
 // Motion
 import { motion as m } from "motion/react";
 import { AnimatePresence } from "motion/react";
-
-// Styles
-import styles from "./Home.module.css";
-import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
-import ListItem from "@/components/List/ListItem.component";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 export default function Home() {
   const [showArrow, setShowArrow] = useState(false);
@@ -52,20 +49,15 @@ export default function Home() {
     },
   };
 
-  // https://reacthustle.com/blog/nextjs-scroll-to-element
-  const handleScroll = (e: MouseEvent<HTMLAnchorElement>) => {
-    // first prevent the default behavior
-    e.preventDefault();
-    // get the href and remove everything before the hash (#)
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    // get the element by id and use scrollIntoView
-    const elem = document.getElementById(targetId);
-    window.scrollTo({
-      top: elem?.getBoundingClientRect().top,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, []);
 
   // Used to present the user with a down arrow if they've been at the top for 6+ seconds
   useEffect(() => {
@@ -164,7 +156,7 @@ export default function Home() {
             {/* Title and links */}
             <m.div
               id="title-and-menu"
-              className="absolute bottom-0 left-0 sm:relative text-neutral-800 dark:text-orange-100 px-4 lg:px-8 lg:mx-28 xl:mx-0"
+              className="absolute bottom-0 left-0 sm:relative px-4 lg:px-8 lg:mx-28 xl:mx-0"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -197,8 +189,8 @@ export default function Home() {
                 className="font-bold text-7xl"
                 variants={itemVariants}
               >
-                <h1 className={styles.firstName}>
-                  Seb<span className={styles.extra}>astien</span>
+                <h1 className="group">
+                  Seb<span className="inline-block text-primary opacity-10 transition-opacity duration-300 group-hover:opacity-100">astien</span>
                 </h1>
                 <h1>Foussé</h1>
               </m.div>
@@ -213,17 +205,14 @@ export default function Home() {
                   <ExplodingTextLink
                     text="*about"
                     href="#about"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                   <ExplodingTextLink
                     text="*things"
                     href="#things"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                   <ExplodingTextLink
                     text="*thoughts"
                     href="#thoughts"
-                    onClick={handleScroll}
                   ></ExplodingTextLink>
                 </div>
               </m.div>
@@ -235,7 +224,7 @@ export default function Home() {
         <AnimatePresence>
           {showArrow && (
             <m.div
-              className="fixed bottom-5 right-5 sm:right-1/2 sm:-translate-x-1/2 m-1 md:m-3 text-5xl animate-bounce"
+              className="fixed bottom-5 right-5 sm:right-1/2 sm:-translate-x-1/2 m-1 md:m-3 text-4xl animate-bounce"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -246,7 +235,7 @@ export default function Home() {
         </AnimatePresence>
 
         {/* About section */}
-        <HomeSection id="about" heading="*about" className="pb-2 text-neutral-800 dark:text-orange-100">
+        <HomeSection id="about" heading="*about" className="pb-2">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 pt-4 pb-8">
             <div>
               <h4 className="text-2xl font-bold italic pb-2">
@@ -335,14 +324,14 @@ export default function Home() {
         {/* Things section */}
         <HomeSection id="things" heading="*things" className="pb-2">
           {/* My things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             My projects, work, art, hobbies, and more
           </h4>
           <div className="px-9">
             <List items={myThingItems} seeMoreHref={"/things"} />
           </div>
           {/* Not my things */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Other cool stuff I found online
           </h4>
           <div className="px-9">
@@ -354,13 +343,13 @@ export default function Home() {
         {/* Thoughts section */}
         <HomeSection id="thoughts" heading="*thoughts" className="pb-2">
           {/* Subtitle */}
-          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Rambles from my soapbox
           </h4>
           <div className="px-9">
             <List items={myThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
           </div>
-          <h4 className="text-2xl font-bold italic text-neutral-800 dark:text-orange-100 px-9 pt-4 pb-3">
+          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Articles, essays, and stories that I enjoyed reading
           </h4>
           <div className="px-9">
@@ -370,7 +359,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6 text-neutral-800 dark:text-orange-100">
+          <div className="flex space-x-6">
             <a href="mailto:me@sebf.xyz">Email</a>
             <a
               href="https://github.com/seb-fousse"
