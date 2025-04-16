@@ -16,7 +16,7 @@ export default function Resume() {
 
         <h1 className="text-6xl font-bold text-center pt-4 pb-2">Sebastien Foussé</h1>
         <div className="flex space-x-6 justify-center">
-          <a href="">Download Condensed Resume</a>
+          <a href="" className="hover:cursor-not-allowed hover:no-underline opacity-50">Download Condensed Resume</a>
           <a href="mailto:me@sebf.xyz">Email me</a>
           <a
             href="https://github.com/seb-fousse"
