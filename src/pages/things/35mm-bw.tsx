@@ -1,7 +1,7 @@
 import ShuffledGallery from '@/components/Gallery/ShuffledGallery.component';
 import data from '@/constants/things/35mmBW.json';
 
-export default function Art() {
+export default function FilmBW() {
   return (
     <ShuffledGallery 
       title="Self scanned & developed B&W film" 
