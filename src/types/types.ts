@@ -5,6 +5,12 @@ export interface IImageData {
   src: string;
   width: number;
   height: number;
-  blurPlaceholder?: string;
+  blurPlaceholder: string;
   alt: string;
+}
+
+export interface IPostData {
+  title: string;
+  date: string;
+  contentHtml: string | TrustedHTML;
 }

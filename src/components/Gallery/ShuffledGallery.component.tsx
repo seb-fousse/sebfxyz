@@ -9,9 +9,10 @@ import tailwindConfig from "../../../tailwind.config";
 import { AnimatePresence, motion as m } from "motion/react";
 
 // Types
-import { IImageData } from "@/types/imageData.type";
+import { IImageData } from "@/types/types";
 import ThemeToggle from "../ThemeToggle/ThemeToggle.component";
 import BackButton from "../Buttons/BackButton";
+import { X } from "lucide-react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -45,6 +46,16 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
   const imageRenderCount = useRef(data.length);
   const [imageForModal, setImageForModal] = useState<IImageData | null>(null);
   const [delayChildren] = useState(delay);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setImageForModal(null);
+      }
+    };
+  
+    window.addEventListener('keydown', handleEscape);
+  }, []);
 
   useEffect(() => {
 
@@ -187,7 +198,7 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
               >
-                &#x2715;
+                <X className="hover:text-primary"/>
               </m.button>
               <Image
                 className="max-w-full max-h-full object-contain p-4 pointer-events-none"
@@ -198,10 +209,10 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
                 layout="intrinsic"
               />
               <div>
-                <span className="font-bold">{imageForModal.title} - </span>
-                <span className="font-normal">{imageForModal.tool}</span>
+                <span className="font-bold">{imageForModal.title ? imageForModal.title + ' - ' : ''}</span>
+                <span className="font-normal">{imageForModal.tool ? imageForModal.tool : ''}</span>
               </div>
-              <div className="font-light">{imageForModal.description}</div>
+              <div className="font-light">{imageForModal.description ? imageForModal.description : ''}</div>
             </m.div>
             <m.div
               initial={{ opacity: 0 }}

@@ -1,6 +1,6 @@
 import things from '@/constants/otherThings.json'
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface IThing {
   title: string;
@@ -12,12 +12,15 @@ export default function RandomRedirect() {
   const router = useRouter();
   const [currentThing, setCurrentThing] = useState<IThing>({title: "", subtitle: "", href:""});
   const [index, setIndex] = useState(Math.floor(Math.random()*things.length));
+  const isActive = useRef(true);
 
   useEffect(() => {
+    isActive.current = true; // component is mounted
     let interval = 20;
     let count = 0;
     const maxCount = 60;
     let finalIndex = index;
+    
     
     const spin = () => {
       setTimeout(() => {
@@ -35,15 +38,19 @@ export default function RandomRedirect() {
           spin();
         } else {
           setTimeout(() => {
-            router.push(things[finalIndex]["href"]);
-          }, 2000); // Pause for 2 seconds before redirecting
+            if (isActive.current && router.pathname === '/random') {
+              router.push(things[finalIndex]["href"]);
+            }
+          }, 2000);
         }
       }, interval);
     };
     
     spin();
     
-    return () => {};
+    return () => {
+      isActive.current = false; // component is unmounted or route changed
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 

@@ -64,7 +64,7 @@ export default function ListItem({ title, subtitle, href, random }: Props) {
           setIsHovering(true);
         }}
         onMouseLeave={() => setIsHovering(false)}
-        whileHover={{ x: 40 }} // Moves right on hover
+        whileHover={{ x: 20 }} // Moves right on hover
         transition={{ type: "spring", stiffness: 200, damping: 50 }}
       >
         {/* Full-width view */}

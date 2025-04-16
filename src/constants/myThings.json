@@ -10,9 +10,14 @@
     "href": "/things/song-visualizers/"
   },
   {
+    "title": "Paintings & Collages",
+    "subtitle": "Selection of artwork from 2019",
+    "href": "/things/art-2019"
+  },
+  {
     "title": "Stereoscopic Images",
     "subtitle": "Taken on Nimslo and Nishika N8000",
-    "href": "/"
+    "href": "/things/stereoscopic-images"
   },
   {
     "title": "Peru 2024",
@@ -20,19 +25,19 @@
     "href": "/things/peru-2024/"
   },
   {
+    "title": "Vietnam 2023",
+    "subtitle": "Photos taken on a trip from Hanoi to Ho Chi Minh",
+    "href": "/things/vietnam-2023/"
+  },
+  {
     "title": "35mm B&W Film",
     "subtitle": "Self loaded film, shot on Pentax K1000, darkroom developed",
-    "href": "/"
+    "href": "/things/35mm-bw"
   },
   {
     "title": "35mm Color Film",
     "subtitle": "Taken on Contax RTS II, Pentax K1000, and various point & shoots",
-    "href": "/"
-  },
-  {
-    "title": "Paintings & Collages",
-    "subtitle": "Selection of artwork from 2019",
-    "href": "/things/art-2019"
+    "href": "/things/35mm-color"
   },
   {
     "title": "Hiking With Dad",

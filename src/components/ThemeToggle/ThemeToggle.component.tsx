@@ -22,7 +22,7 @@ const ThemeToggle = ({ className = "" }: Props) => {
       className={className}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      {theme === 'dark' ? <Sun /> : <Moon />}
+      {theme === 'dark' ? <Sun className="hover:text-primary" /> : <Moon className="hover:text-primary" />}
       <span className="sr-only">Toggle theme</span>
     </button>
   );

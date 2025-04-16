@@ -11,9 +11,9 @@
   
     --foreground: 26.8% 0.007 34.298;
   
-    --card: 0 0% 100%;
+    --card: 26.8% 0.007 34.298;
   
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 98% 0.016 73.684;
   
     --popover: 0 0% 100%;
   
@@ -63,9 +63,9 @@
   
     --foreground: 95.4% 0.038 75.164;
   
-    --card: 0 0% 3.9%;
+    --card: 95.4% 0.038 75.164;
   
-    --card-foreground: 0 0% 98%;
+    --card-foreground: 21.6% 0.006 56.043;
   
     --popover: 0 0% 3.9%;
   
@@ -122,4 +122,30 @@
   body {
     @apply bg-background text-foreground;
   }
+  p {
+    @apply whitespace-normal break-words;
+  }
+
+  /* Optional: prose links inherit color and underline on hover */
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+
+  /* Optional: custom heading colors/sizes */
+  .prose h1 {
+    @apply text-3xl font-bold text-foreground;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-semibold text-foreground;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold text-foreground;
+  }
+
+  .prose p {
+    @apply whitespace-normal break-words text-base indent-6 leading-loose text-foreground;
+  }
+
 }

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Components
 import TypewriterComponent from "typewriter-effect";
 import ExplodingTextLink from "@/components/ExplodingTextLink/ExplodingTextLink.component";
-import HomeSection from "@/components/Basic/HomeSection.component";
+import Section from "@/components/Basic/Section.component";
 import List from "@/components/List/List.component";
 import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
@@ -128,9 +128,7 @@ export default function Home() {
       <div className="max-w-7xl m-auto">
 
         {/* Theme toggle */}
-        <div className="fixed top-4 right-4 z-50">
-          <ThemeToggle />
-        </div>
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
         {/* Splash section */}
         <section
@@ -235,14 +233,14 @@ export default function Home() {
         </AnimatePresence>
 
         {/* About section */}
-        <HomeSection id="about" heading="*about" className="pb-2">
+        <Section id="about" heading="*about" className="pb-2">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 pt-4 pb-8">
             <div>
               <h4 className="text-2xl font-bold italic pb-2">
                 Who is Seb?
               </h4>
               <HoverPopup text="Globetrotting multi-citizen">
-                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   London born-n-bred! American, British, and French passport holder
                 </div>
               </HoverPopup>
@@ -254,17 +252,18 @@ export default function Home() {
                   alt="Gif of kid coding at computer"
                   width="320"
                   height="241"
+                  unoptimized
                 />
               </HoverPopup>
               ,&nbsp;
               <HoverPopup text="Brooklyn based">
-                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   <LocalWeather />
                 </div>
               </HoverPopup>
               ,&nbsp;
               <HoverPopup text="hobby hopper">
-                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   Jack of some trades, master of fewer
                 </div>
               </HoverPopup>
@@ -278,13 +277,14 @@ export default function Home() {
                   alt="Gif of guy falling of a wall"
                   width="480"
                   height="270"
+                  unoptimized
                 />
               </HoverPopup>
               ,&nbsp;
               <HoverPopup text="terminally online" />
               ,&nbsp;
               <HoverPopup text="music appreciator">
-                <div className="p-2 bg-neutral-800 text-orange-50 dark:bg-orange-100 dark:text-neutral-900 rounded-sm drop-shadow-lg">
+                <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   <RecentlyListened />
                 </div>
               </HoverPopup>
@@ -293,7 +293,7 @@ export default function Home() {
               , and other things that make me, <span className="italic">me</span>.
             </div>
             <div>
-              <h4 className="text-2xl font-bold italicpb-2">
+              <h4 className="text-2xl font-bold italic pb-2">
                 What is this website?
               </h4>
               <p>
@@ -305,11 +305,11 @@ export default function Home() {
             </div>
             <div>
               <h4 className="text-2xl font-bold italic  pb-2">
-                Are you a recruiter?
+                Recruiter or need a resume?
               </h4>
               <p>
-                Thanks for considering me!{" "}
-                <Link href="/" className="underline">
+                Thanks for giving it a look!{" "}
+                <Link href="/resume" className="text-primary">
                   This page
                 </Link>{" "}
                 might be more relevant for you. It lists my academic and
@@ -319,10 +319,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </HomeSection>
+        </Section>
 
         {/* Things section */}
-        <HomeSection id="things" heading="*things" className="pb-2">
+        <Section id="things" heading="*things" className="pb-2">
           {/* My things */}
           <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             My projects, work, art, hobbies, and more
@@ -335,13 +335,13 @@ export default function Home() {
             Other cool stuff I found online
           </h4>
           <div className="px-9">
-            <ListItem title="See all" subtitle="Check it all out" href={""} />
+            {/* <ListItem title="See all" subtitle="Check it all out" href={""} /> */}
             <ListItem title="Random" subtitle="Roll the dice" href={"/random"} random/>
           </div>
-        </HomeSection>
+        </Section>
 
         {/* Thoughts section */}
-        <HomeSection id="thoughts" heading="*thoughts" className="pb-2">
+        <Section id="thoughts" heading="*thoughts" className="pb-2">
           {/* Subtitle */}
           <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Rambles from my soapbox
@@ -355,11 +355,11 @@ export default function Home() {
           <div className="px-9">
             <List items={otherThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
           </div>
-        </HomeSection>
+        </Section>
 
         {/* Footer */}
         <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 text-primary">
             <a href="mailto:me@sebf.xyz">Email</a>
             <a
               href="https://github.com/seb-fousse"

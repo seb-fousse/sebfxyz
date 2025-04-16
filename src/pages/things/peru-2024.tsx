@@ -4,14 +4,12 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import imageData from "@/constants/things/peru2024.json"
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react"
-import { useMobile } from "@/hooks/use-mobile"
 
-export default function MusingManWinkle() {
+export default function Peru() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
 
   const [viewportHeight, setViewportHeight] = useState(0)
-  const isMobile = useMobile()
 
   // Find the image with the largest aspect ratio (widest relative to height)
   const maxAspectRatio = Math.max(...imageData.map((image) => image.width / image.height))
@@ -59,7 +57,7 @@ export default function MusingManWinkle() {
 
   // Use the smaller of calculated height or 80% of viewport height
   // Also consider mobile adjustment
-  const finalHeight = isMobile ? Math.min(calculatedHeight, maxHeight) : Math.min(calculatedHeight, maxHeight)
+  const finalHeight = Math.min(calculatedHeight, maxHeight)
 
   return (
     <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
@@ -76,7 +74,7 @@ export default function MusingManWinkle() {
           skipSnaps: false,
           containScroll: "trimSnaps",
         }}
-        className="w-full justify-center pt-4"
+        className="w-full justify-center pt-2"
       >
         <CarouselContent>
           {imageData.map((image, index) => {
