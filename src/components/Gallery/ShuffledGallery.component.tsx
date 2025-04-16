@@ -47,6 +47,16 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
   const [delayChildren] = useState(delay);
 
   useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setImageForModal(null);
+      }
+    };
+  
+    window.addEventListener('keydown', handleEscape);
+  }, []);
+
+  useEffect(() => {
 
     const mdBreakpoint = parseInt(fullConfig.theme.screens.md.slice(0, -2));
     const mdOrLarger = window.innerWidth >= mdBreakpoint;
@@ -198,10 +208,10 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
                 layout="intrinsic"
               />
               <div>
-                <span className="font-bold">{imageForModal.title} - </span>
-                <span className="font-normal">{imageForModal.tool}</span>
+                <span className="font-bold">{imageForModal.title ? imageForModal.title + ' - ' : ''}</span>
+                <span className="font-normal">{imageForModal.tool ? imageForModal.tool : ''}</span>
               </div>
-              <div className="font-light">{imageForModal.description}</div>
+              <div className="font-light">{imageForModal.description ? imageForModal.description : ''}</div>
             </m.div>
             <m.div
               initial={{ opacity: 0 }}
