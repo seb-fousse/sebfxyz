@@ -252,6 +252,7 @@ export default function Home() {
                   alt="Gif of kid coding at computer"
                   width="320"
                   height="241"
+                  unoptimized
                 />
               </HoverPopup>
               ,&nbsp;
@@ -276,6 +277,7 @@ export default function Home() {
                   alt="Gif of guy falling of a wall"
                   width="480"
                   height="270"
+                  unoptimized
                 />
               </HoverPopup>
               ,&nbsp;

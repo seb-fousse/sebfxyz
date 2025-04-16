@@ -74,7 +74,7 @@ export default function Peru() {
           skipSnaps: false,
           containScroll: "trimSnaps",
         }}
-        className="w-full justify-center pt-4"
+        className="w-full justify-center pt-2"
       >
         <CarouselContent>
           {imageData.map((image, index) => {
