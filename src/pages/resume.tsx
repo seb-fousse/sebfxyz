@@ -1,13 +1,8 @@
 import Section from "@/components/Basic/Section.component";
 import BackButton from "@/components/Buttons/BackButton";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
-import { useEffect } from "react";
 
 export default function Resume() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div>
       <div className="max-w-7xl m-auto">

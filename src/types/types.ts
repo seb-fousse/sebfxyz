@@ -8,3 +8,9 @@ export interface IImageData {
   blurPlaceholder: string;
   alt: string;
 }
+
+export interface IPostData {
+  title: string;
+  date: string;
+  contentHtml: string | TrustedHTML;
+}

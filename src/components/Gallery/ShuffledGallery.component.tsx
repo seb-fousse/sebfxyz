@@ -9,7 +9,7 @@ import tailwindConfig from "../../../tailwind.config";
 import { AnimatePresence, motion as m } from "motion/react";
 
 // Types
-import { IImageData } from "@/types/imageData.type";
+import { IImageData } from "@/types/types";
 import ThemeToggle from "../ThemeToggle/ThemeToggle.component";
 import BackButton from "../Buttons/BackButton";
 import { X } from "lucide-react";

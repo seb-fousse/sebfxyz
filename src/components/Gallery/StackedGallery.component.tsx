@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useAnimate } from "motion/react";
 
 // Types
-import { IImageData } from "@/types/imageData.type";
+import { IImageData } from "@/types/types";
 
 interface ImageStackProps {
   children: ReactNode;
