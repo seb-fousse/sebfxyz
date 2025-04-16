@@ -1,11 +1,11 @@
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import BackButton from "@/components/Buttons/BackButton";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import imageData from "@/constants/things/peru2024.json"
+import imageData from "@/constants/things/vietnam2023.json"
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react"
 
-export default function Peru() {
+export default function Vietnam() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
 
@@ -65,7 +65,7 @@ export default function Peru() {
       <ThemeToggle className="fixed top-4 right-4 z-10"/>
 
       <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
-        Peru
+        Vietnam
       </h1>
 
       <Carousel
@@ -118,8 +118,8 @@ export default function Peru() {
       </Carousel>
       
       
-      <div className="px-2 pt-3">
-        Photos taken on a 2 week backpacking trip in 2024. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
+      <div className="px-2 py-4">
+        Photos taken on a week long trip through Hanoi, Ha Long Bay, Ninh Binh, Hoi An, and Ho Chi Minh City. Highlights include taking multiple cooking classes, sunrise at Ha Long Bay, cruise up the Mekong river, and taking a shot of snake wine.
       </div>
       
     </div>
