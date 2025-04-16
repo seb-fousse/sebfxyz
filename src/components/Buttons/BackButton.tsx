@@ -13,7 +13,7 @@ export default function BackButton({ href, className }: Props) {
       href={href}
       scroll={false}
     >
-      <ArrowLeft />
+      <ArrowLeft className="hover:text-primary"/>
     </Link>
   )
 }

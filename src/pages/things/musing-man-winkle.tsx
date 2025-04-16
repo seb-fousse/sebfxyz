@@ -17,7 +17,7 @@ export default function MusingManWinkle() {
         *Musing Man Winkle
       </h1>
 
-      <div className="w-full aspect-video py-4 px-2">
+      <div className="w-full aspect-video my-4 mx-2 bg-black">
         <iframe
           className="w-full h-full"
           src="https://www.youtube.com/embed/l2EZbWd4yJE?modestbranding=1"

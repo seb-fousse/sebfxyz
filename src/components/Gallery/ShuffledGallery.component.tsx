@@ -12,6 +12,7 @@ import { AnimatePresence, motion as m } from "motion/react";
 import { IImageData } from "@/types/imageData.type";
 import ThemeToggle from "../ThemeToggle/ThemeToggle.component";
 import BackButton from "../Buttons/BackButton";
+import { X } from "lucide-react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -197,7 +198,7 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
               >
-                &#x2715;
+                <X className="hover:text-primary"/>
               </m.button>
               <Image
                 className="max-w-full max-h-full object-contain p-4 pointer-events-none"

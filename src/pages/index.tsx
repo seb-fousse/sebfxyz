@@ -309,7 +309,7 @@ export default function Home() {
               </h4>
               <p>
                 Thanks for giving it a look!{" "}
-                <Link href="/resume" className="underline">
+                <Link href="/resume" className="text-primary">
                   This page
                 </Link>{" "}
                 might be more relevant for you. It lists my academic and
@@ -335,7 +335,7 @@ export default function Home() {
             Other cool stuff I found online
           </h4>
           <div className="px-9">
-            <ListItem title="See all" subtitle="Check it all out" href={""} />
+            {/* <ListItem title="See all" subtitle="Check it all out" href={""} /> */}
             <ListItem title="Random" subtitle="Roll the dice" href={"/random"} random/>
           </div>
         </Section>
@@ -359,7 +359,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 text-primary">
             <a href="mailto:me@sebf.xyz">Email</a>
             <a
               href="https://github.com/seb-fousse"
