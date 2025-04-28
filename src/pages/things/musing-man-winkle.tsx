@@ -27,7 +27,7 @@ export default function MusingManWinkle() {
         ></iframe>
       </div>
       
-      <div className="px-9">
+      <div className="mx-2">
         An audio-visual portrait that represents my &quot;digital average&quot;, how I appear to my computer. I trained a <Link className="text-primary" href="https://github.com/NVlabs/stylegan2" target="_blank">StyleGAN2</Link> model on 900+ photos of my face as an infant, toddler, child, teenager, and adult. The audio is made up of clips from assorted childhood home videos, spliced together with <Link className="text-primary" href="https://www.apple.com/logic-pro/" target="_blank">Logic Pro</Link>. Minor video edits were done in <Link className="text-primary" href="https://www.apple.com/final-cut-pro/" target="_blank">Final Cut Pro</Link>. The name for this piece is a reference to <Link className="text-primary" href="https://en.wikipedia.org/wiki/Rip_Van_Winkle" target="_blank">Rip Van Winkle</Link>, a Dutch-American who falls asleep and wakes up 20 years later in a different world. Just over 20 years worth of photos used to train this model.
       </div>
       

@@ -118,7 +118,7 @@ export default function Peru() {
       </Carousel>
       
       
-      <div className="px-2 pt-3">
+      <div className="px-2 lg:max-w-6xl pt-4 pb-8">
         Photos taken on a 2 week backpacking trip in 2024. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
       </div>
       

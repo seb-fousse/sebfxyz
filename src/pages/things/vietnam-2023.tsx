@@ -118,7 +118,7 @@ export default function Vietnam() {
       </Carousel>
       
       
-      <div className="px-2 py-4">
+      <div className="px-2 lg:max-w-6xl pt-4 pb-8">
         Photos taken on a week long trip through Hanoi, Ha Long Bay, Ninh Binh, Hoi An, and Ho Chi Minh City. Highlights include taking multiple cooking classes, sunrise at Ha Long Bay, cruise up the Mekong river, and taking a shot of snake wine.
       </div>
       
