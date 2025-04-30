@@ -1,8 +1,11 @@
-import Section from "@/components/Basic/Section.component";
-import BackButton from "@/components/Buttons/BackButton";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import Link from "next/link";
 import { useEffect } from "react";
+
+// Components
+import Section from "@/components/Basic/Section.component";
+import BackButton from "@/components/Buttons/BackButton";
+import CustomHead from "@/components/CustomHead/CustomHead.component";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 export default function Resume() {
   useEffect(() => {
@@ -11,6 +14,8 @@ export default function Resume() {
   
   return (
     <div>
+      <CustomHead title="Seb's Resume" description="Seb's resume - Education, work, skills, projects, and contact info" url="https://sebf.xyz/resume" />
+
       <div className="max-w-7xl m-auto">
         <BackButton className="fixed top-4 left-4" href={"/#about"} />
         <ThemeToggle className="fixed top-4 right-4" />
@@ -174,7 +179,7 @@ export default function Resume() {
                 NoteMark
               </span>
               <div className="flex-grow h-px bg-foreground mx-4" />
-              <span className="text-right ml-4">Sep - Dec 2023</span>
+              <span className="text-right ml-4">Sep 2024</span>
             </div>
             <div className="flex justify-between w-full">
               <span className="text-left italic">
