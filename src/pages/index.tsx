@@ -249,8 +249,6 @@ export default function Home() {
                 />
               </HoverPopup>
               ,&nbsp;
-              <HoverPopup text="terminally online" />
-              ,&nbsp;
               <HoverPopup text="music appreciator">
                 <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   <RecentlyListened />
@@ -282,7 +280,7 @@ export default function Home() {
                 </Link>{" "}
                 might be more relevant for you. It lists my academic and
                 professional accomplishments. Also, sorry about the
-                splash-screen nightmare fuel just above... I promise I have a
+                nightmare fuel just above... I promise I have a
                 more professional headshot somewhere.
               </p>
             </div>
