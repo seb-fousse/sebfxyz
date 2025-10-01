@@ -12,8 +12,8 @@ import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
 import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
 import ListItem from "@/components/List/ListItem.component";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import CustomHead from "@/components/CustomHead/CustomHead.component";
+import Layout from "@/components/Layout/Layout.component";
 
 // Constants
 import myThingItems from "@/constants/myThings.json";
@@ -89,12 +89,10 @@ export default function Home() {
   }, [isAtTop]);
 
   return (
-    <div>
+    <>
       <CustomHead title="Seb Fousse" description="Seb's personal site - showcasing work, projects, skills, writing, and contact information." url="https://sebf.xyz" />
 
-      <div className="max-w-7xl m-auto">
-        {/* Theme toggle */}
-        <ThemeToggle className="fixed top-4 right-4 z-1000" />
+      <Layout>
 
         {/* Splash section */}
         <section
@@ -335,35 +333,7 @@ export default function Home() {
             />
           </div>
         </Section>
-
-        {/* Footer */}
-        <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6 text-primary">
-            <a href="mailto:me@sebf.xyz">Email</a>
-            <a
-              href="https://github.com/seb-fousse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sebastien-fousse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com/sebf.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-          </div>
-        </footer>
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 }

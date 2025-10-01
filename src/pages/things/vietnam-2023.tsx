@@ -69,7 +69,7 @@ export default function Vietnam() {
       <CustomHead title="Vietnam 2023" description="Photos taken on a trip through North, Central, and Southern Vietnam" url="https://sebf.xyz/things/vietnam-2023" />
       <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
         <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-        <ThemeToggle className="fixed top-4 right-4 z-10"/>
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
         <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
           Vietnam

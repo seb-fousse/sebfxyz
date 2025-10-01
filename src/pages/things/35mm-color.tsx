@@ -69,7 +69,7 @@ export default function FilmColor() {
       <CustomHead title="35mm Color Film" description="Photos taken on Contax RTS II, Pentax K1000, and various point and shoots. Film used: Portra 400, Fujifilm Superia 400, or Kodak Gold 200." url="https://sebf.xyz/things/35mm-color" />  
       <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
         <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-        <ThemeToggle className="fixed top-4 right-4 z-10"/>
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
         <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
           35mm film

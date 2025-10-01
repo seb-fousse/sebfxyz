@@ -10,7 +10,7 @@ interface CustomHeadProps {
 const CustomHead = ({
   title = 'Seb Fousse | Developer, Designer, Creator',
   description = 'Personal website showcasing work, projects, skills, writing, and contact information.',
-  image = '/image/PhotoCard.jpg',
+  image = '/images/PhotoCard.jpg',
   url = 'https://sebf.xyz',
 }: CustomHeadProps) => {
   return (

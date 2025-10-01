@@ -69,7 +69,7 @@ export default function Peru() {
       <CustomHead title="Peru 2024" description="Selection of photos taken on a backpacking trip through Cusco and surrounding areas" url="https://sebf.xyz/things/peru-2024" />
       <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
         <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-        <ThemeToggle className="fixed top-4 right-4 z-10"/>
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
         <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
           Peru

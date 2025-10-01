@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion as m } from "motion/react";
 
 // Components
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import BackButton from "@/components/Buttons/BackButton";
 import CustomHead from "@/components/CustomHead/CustomHead.component";
+import Layout from "@/components/Layout/Layout.component";
 
 // Icons
 import { Play } from "lucide-react";
@@ -36,11 +36,10 @@ export default function SongVisualizers() {
   };
 
   return (
-    <div>
+    <>
       <CustomHead title="Song Visualizers" description="Various songs visualized with StyleGAN2 models." url="https://sebf.xyz/things/song-visualizers" />
-      <div className="max-w-7xl m-auto items-center">
+      <Layout>
         <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-        <ThemeToggle className="fixed top-4 right-4 z-10"/>
 
         <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
           Song Visualizers
@@ -88,8 +87,7 @@ export default function SongVisualizers() {
             ))}
           </div>
         </div>
-      
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 };

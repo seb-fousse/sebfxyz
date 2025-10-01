@@ -26,7 +26,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ text, children }) => {
       {text}
       {popup && (
         <motion.div
-          className="fixed pointer-events-none z-50"
+          className="fixed pointer-events-none z-50 m-2"
           style={{
             top: popup.y,
             left: popup.x,

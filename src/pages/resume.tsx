@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Section from "@/components/Basic/Section.component";
 import BackButton from "@/components/Buttons/BackButton";
 import CustomHead from "@/components/CustomHead/CustomHead.component";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
+import Layout from "@/components/Layout/Layout.component";
 
 export default function Resume() {
   useEffect(() => {
@@ -13,12 +13,11 @@ export default function Resume() {
   }, []);
   
   return (
-    <div>
+    <>
       <CustomHead title="Seb's Resume" description="Seb's resume - Education, work, skills, projects, and contact info" url="https://sebf.xyz/resume" />
 
-      <div className="max-w-7xl m-auto">
+      <Layout>
         <BackButton className="fixed top-4 left-4" href={"/#about"} />
-        <ThemeToggle className="fixed top-4 right-4" />
 
         <h1 className="text-6xl font-bold text-center pt-4 pb-2">Sebastien Foussé</h1>
         <div className="flex flex-wrap justify-center mx-4 gap-x-6 gap-y-2 text-primary">
@@ -257,8 +256,7 @@ export default function Resume() {
             </ul>
           </div>
         </Section>
-
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 }
