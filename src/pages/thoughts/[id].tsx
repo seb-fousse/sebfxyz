@@ -19,7 +19,7 @@ export default function Post({ postData }: { postData: IPostData }) {
       <div className="max-w-xl mx-auto px-4 mb-16">
         <div className='font-bold text-6xl mb-4 mt-12 sm:mt-4'>{postData.title}</div>
         <div className='italic'>{postData.date}</div>
-        <div className='prose mt-4'>
+        <div className='prose mt-12'>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </div>

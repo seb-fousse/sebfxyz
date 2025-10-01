@@ -83,10 +83,11 @@ export default function Things() {
         {/* Main section */}
         <Section id="things" heading="*things" className="pb-2">
           <div className="px-9 pt-4 pb-8">
+            
             {/* Filter section */}
             <div className="mb-8">
-              <div className="flex items-center justify-between">
-                <h4 className="text-2xl font-bold italic pb-4">Filter by tags</h4> 
+              <div className="flex items-center justify-between pb-4">
+                <h4 className="text-2xl font-bold italic">Filter by tags</h4> 
                 <ToggleGroup
                   type="single" 
                   size="sm"
@@ -108,10 +109,10 @@ export default function Things() {
                   <button
                     key={tag}
                     onClick={() => toggleTag(tag)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
+                    className={`px-3 py-1 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
                       selectedTags.includes(tag)
-                        ? 'bg-primary border-primary text-primary-foreground'
-                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                        ? 'bg-primary border-primary text-background'
+                        : 'bg-background border-primary text-foreground hover:text-primary'
                     }`}
                   >
                     {tag}
@@ -119,25 +120,26 @@ export default function Things() {
                 ))}
               </div>
 
-              {/* Clear filters button */}
-              {selectedTags.length > 0 && (
-                <button
-                  onClick={clearFilters}
-                  className="text-sm text-muted-foreground hover:text-foreground underline"
-                >
-                  Clear all filters
-                </button>
-              )}
-
-              {/* Results count */}
-              <div className="mt-4 text-sm text-muted-foreground">
-                Showing {filteredItems.length} of {myThingItems.length} items
+              <div className="flex items-center gap-4">
+                {/* Clear filters button */}
                 {selectedTags.length > 0 && (
-                  <span>
-                    {' '}matching {selectedTags.length} selected tag{selectedTags.length > 1 ? 's' : ''} 
-                    {' '}({filterLogic.toUpperCase()} logic)
-                  </span>
+                  <button
+                    onClick={clearFilters}
+                    className="text-sm text-muted-foreground hover:text-primary underline transition-all duration-200"
+                  >
+                    Clear all filters
+                  </button>
                 )}
+
+                {/* Results count */}
+                <div className="text-sm text-muted-foreground">
+                  Showing {filteredItems.length} of {myThingItems.length} items
+                  {selectedTags.length > 0 && (
+                    <span>
+                      {' '}matching {filterLogic === "and" ? "all" : "any"} of the {selectedTags.length} selected tag{selectedTags.length > 1 ? 's' : ''} 
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
