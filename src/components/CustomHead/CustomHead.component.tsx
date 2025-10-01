@@ -38,8 +38,12 @@ const CustomHead = ({
       {/* Favicon */}
       <link rel="icon" href="/favicon.ico" />
 
-      {/* Theme color for mobile */}
-      <meta name="theme-color" content="#ffffff" />
+      {/* Theme color for mobile browsers - matches light theme background */}
+      <meta name="theme-color" content="#FFF7ED" />
+      <meta name="theme-color" content="#1C1917" media="(prefers-color-scheme: dark)" />
+      
+      {/* iOS Safari status bar styling */}
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     </Head>
   );
 };
