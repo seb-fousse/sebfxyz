@@ -2,51 +2,67 @@
   {
     "title": "Musing Man Winkle",
     "subtitle": "Audio-visual portrait made with StyleGAN2 and 900 childhood photos",
-    "href": "/things/musing-man-winkle/"
+    "href": "/things/musing-man-winkle/",
+    "tags": ["art", "generative", "tech", "video"]
   },
   {
     "title": "Song Visualizers",
     "subtitle": "StyleGAN2 generated video synced to audio",
-    "href": "/things/song-visualizers/"
+    "href": "/things/song-visualizers/",
+    "tags": ["art", "generative", "tech", "video"]
   },
   {
     "title": "Paintings & Collages",
     "subtitle": "Selection of artwork from 2019",
-    "href": "/things/art-2019"
+    "href": "/things/art-2019",
+    "tags": ["art", "collage", "painting"]
   },
   {
     "title": "Stereoscopic Images",
     "subtitle": "Taken on Nimslo and Nishika N8000",
-    "href": "/things/stereoscopic-images"
+    "href": "/things/stereoscopic-images",
+    "tags": ["art", "35mm", "photo"]
   },
   {
     "title": "Peru 2024",
     "subtitle": "Photos taken on a 5 day hike to Machu Picchu",
-    "href": "/things/peru-2024/"
+    "href": "/things/peru-2024/",
+    "tags": ["art", "photo"]
   },
   {
     "title": "Vietnam 2023",
     "subtitle": "Photos taken on a trip from Hanoi to Ho Chi Minh",
-    "href": "/things/vietnam-2023/"
+    "href": "/things/vietnam-2023/",
+    "tags": ["art", "photo"]
   },
   {
     "title": "35mm B&W Film",
     "subtitle": "Self loaded film, shot on Pentax K1000, darkroom developed",
-    "href": "/things/35mm-bw"
+    "href": "/things/35mm-bw",
+    "tags": ["art", "35mm", "photo"]
   },
   {
     "title": "35mm Color Film",
     "subtitle": "Taken on Contax RTS II, Pentax K1000, and various point & shoots",
-    "href": "/things/35mm-color"
+    "href": "/things/35mm-color",
+    "tags": ["art", "35mm", "photo"]
   },
   {
     "title": "Hiking With Dad",
     "subtitle": "Dad-themed chatbot that provides a packing list for a hike",
-    "href": "https://github.com/seb-fousse/hiking-with-dad"
+    "href": "https://github.com/seb-fousse/hiking-with-dad",
+    "tags": ["javascript", "tech"]
   },
   {
     "title": "BeanKrypt",
     "subtitle": "Steganography using Python & Flask",
-    "href": "https://github.com/seb-fousse/BeanKrypt"
+    "href": "https://github.com/seb-fousse/BeanKrypt",
+    "tags": ["python", "tech"]
+  },
+  {
+    "title": "SubletSwap",
+    "subtitle": "Web-app for students seeking sublets",
+    "href": "/things/subletswap",
+    "tags": ["javascript", "tech"]
   }
 ]
