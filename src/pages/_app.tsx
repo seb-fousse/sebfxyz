@@ -43,7 +43,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <AnimatePresence mode="wait">
         <motion.div key={router.route} variants={variants} initial="initial" animate="animate" exit="exit">
           <Component {...pageProps} />

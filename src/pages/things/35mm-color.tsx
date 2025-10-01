@@ -1,9 +1,14 @@
+import { useEffect, useState, useRef } from "react"
+import Image from "next/image";
+
+// Components
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import BackButton from "@/components/Buttons/BackButton";
+import CustomHead from "@/components/CustomHead/CustomHead.component";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
+// Constants
 import imageData from "@/constants/things/35mmColor.json"
-import Image from "next/image";
-import { useEffect, useState, useRef } from "react"
 
 export default function FilmColor() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -60,68 +65,71 @@ export default function FilmColor() {
   const finalHeight = Math.min(calculatedHeight, maxHeight)
 
   return (
-    <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
-      <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-      <ThemeToggle className="fixed top-4 right-4 z-10"/>
+    <div>
+      <CustomHead title="35mm Color Film" description="Photos taken on Contax RTS II, Pentax K1000, and various point and shoots. Film used: Portra 400, Fujifilm Superia 400, or Kodak Gold 200." url="https://sebf.xyz/things/35mm-color" />  
+      <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
+        <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
-      <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
-        35mm film
-      </h1>
+        <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
+          35mm film
+        </h1>
 
-      <Carousel
-        opts={{
-          align: "center",
-          skipSnaps: false,
-          containScroll: "trimSnaps",
-        }}
-        className="w-full justify-center pt-2"
-      >
-        <CarouselContent>
-          {imageData.map((image, index) => {
-            // Calculate width based on aspect ratio while maintaining consistent height
-            const aspectRatio = image.width / image.height
-            const calculatedWidth = finalHeight * aspectRatio
+        <Carousel
+          opts={{
+            align: "center",
+            skipSnaps: false,
+            containScroll: "trimSnaps",
+          }}
+          className="w-full justify-center pt-2"
+        >
+          <CarouselContent>
+            {imageData.map((image, index) => {
+              // Calculate width based on aspect ratio while maintaining consistent height
+              const aspectRatio = image.width / image.height
+              const calculatedWidth = finalHeight * aspectRatio
 
-            return (
-              <CarouselItem
-                key={index}
-                className="pl-4 md:basis-auto flex items-center justify-center"
-                style={{ flex: "0 0 auto" }}
-              >
-                <div
-                  className={'overflow-hidden'}
-                  style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
+              return (
+                <CarouselItem
+                  key={index}
+                  className="pl-4 md:basis-auto flex items-center justify-center"
+                  style={{ flex: "0 0 auto" }}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    placeholder="blur"
-                    blurDataURL={image.blurPlaceholder}
-                    priority={index < 5}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-              </CarouselItem>
-            )
-          })}
-        </CarouselContent>
-        <div className="flex justify-center gap-4 mt-4">
-          <CarouselPrevious className="relative inset-0 translate-y-0" />
-          <CarouselNext className="relative inset-0 translate-y-0" />
+                  <div
+                    className={'overflow-hidden'}
+                    style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      placeholder="blur"
+                      blurDataURL={image.blurPlaceholder}
+                      priority={index < 5}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </CarouselItem>
+              )
+            })}
+          </CarouselContent>
+          <div className="flex justify-center gap-4 mt-4">
+            <CarouselPrevious className="relative inset-0 translate-y-0" />
+            <CarouselNext className="relative inset-0 translate-y-0" />
+          </div>
+        </Carousel>
+        
+        
+        <div className="px-2 pt-3">
+            Photos taken on Contax RTS II, Pentax K1000, and various point and shoots. Film used was probably Portra 400, Fujifilm Superia 400, or Kodak Gold 200.
         </div>
-      </Carousel>
-      
-      
-      <div className="px-2 pt-3">
-          Photos taken on Contax RTS II, Pentax K1000, and various point and shoots. Film used was probably Portra 400, Fujifilm Superia 400, or Kodak Gold 200.
+        
       </div>
-      
     </div>
   );
 };

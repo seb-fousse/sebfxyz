@@ -1,9 +1,14 @@
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
-import BackButton from "@/components/Buttons/BackButton";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import imageData from "@/constants/things/peru2024.json"
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react"
+
+// Components
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
+import BackButton from "@/components/Buttons/BackButton";
+import CustomHead from "@/components/CustomHead/CustomHead.component";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
+// Constants
+import imageData from "@/constants/things/peru2024.json"
 
 export default function Peru() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -60,68 +65,69 @@ export default function Peru() {
   const finalHeight = Math.min(calculatedHeight, maxHeight)
 
   return (
-    <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
-      <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-      <ThemeToggle className="fixed top-4 right-4 z-10"/>
+    <div>
+      <CustomHead title="Peru 2024" description="Selection of photos taken on a backpacking trip through Cusco and surrounding areas" url="https://sebf.xyz/things/peru-2024" />
+      <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
+        <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
+        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
-      <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
-        Peru
-      </h1>
+        <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
+          Peru
+        </h1>
 
-      <Carousel
-        opts={{
-          align: "center",
-          skipSnaps: false,
-          containScroll: "trimSnaps",
-        }}
-        className="w-full justify-center pt-2"
-      >
-        <CarouselContent>
-          {imageData.map((image, index) => {
-            // Calculate width based on aspect ratio while maintaining consistent height
-            const aspectRatio = image.width / image.height
-            const calculatedWidth = finalHeight * aspectRatio
+        <Carousel
+          opts={{
+            align: "center",
+            skipSnaps: false,
+            containScroll: "trimSnaps",
+          }}
+          className="w-full justify-center pt-2"
+        >
+          <CarouselContent>
+            {imageData.map((image, index) => {
+              // Calculate width based on aspect ratio while maintaining consistent height
+              const aspectRatio = image.width / image.height
+              const calculatedWidth = finalHeight * aspectRatio
 
-            return (
-              <CarouselItem
-                key={index}
-                className="pl-4 md:basis-auto flex items-center justify-center"
-                style={{ flex: "0 0 auto" }}
-              >
-                <div
-                  className={'overflow-hidden'}
-                  style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
+              return (
+                <CarouselItem
+                  key={index}
+                  className="pl-4 md:basis-auto flex items-center justify-center"
+                  style={{ flex: "0 0 auto" }}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    placeholder="blur"
-                    blurDataURL={image.blurPlaceholder}
-                    priority={index < 5}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-              </CarouselItem>
-            )
-          })}
-        </CarouselContent>
-        <div className="flex justify-center gap-4 mt-4">
-          <CarouselPrevious className="relative inset-0 translate-y-0" />
-          <CarouselNext className="relative inset-0 translate-y-0" />
+                  <div
+                    className={'overflow-hidden'}
+                    style={{ height: `${finalHeight}px`, width: `${calculatedWidth}px` }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      placeholder="blur"
+                      blurDataURL={image.blurPlaceholder}
+                      priority={index < 5}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </CarouselItem>
+              )
+            })}
+          </CarouselContent>
+          <div className="flex justify-center gap-4 mt-4">
+            <CarouselPrevious className="relative inset-0 translate-y-0" />
+            <CarouselNext className="relative inset-0 translate-y-0" />
+          </div>
+        </Carousel>
+        
+        <div className="px-2 lg:max-w-6xl pt-4 pb-8">
+          Photos taken on a 2 week backpacking trip in 2024. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
         </div>
-      </Carousel>
-      
-      
-      <div className="px-2 lg:max-w-6xl pt-4 pb-8">
-        Photos taken on a 2 week backpacking trip in 2024. Noteable highlights include the five-day Salkantay trek, Machu Picchu, the Red Valley, Maras, Moray, paragliding in the Andes, Aji de gallina, and a cold Cusquena.
       </div>
-      
     </div>
   );
 };

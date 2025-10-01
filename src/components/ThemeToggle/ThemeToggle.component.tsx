@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ThemeToggle = ({ className = "" }: Props) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Avoid hydration mismatch
@@ -15,14 +15,35 @@ const ThemeToggle = ({ className = "" }: Props) => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  const handleThemeToggle = () => {
+    const currentTheme = resolvedTheme || theme;
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  };
+
+  // Handle touch events for better Safari iOS compatibility
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleThemeToggle();
+  };
+
+  if (!mounted) {
+    // Return a placeholder to prevent layout shift
+    return (
+      <button className={className} disabled>
+        <Moon className="hover:text-primary" />
+        <span className="sr-only">Toggle theme</span>
+      </button>
+    );
+  }
 
   return (
     <button
       className={className}
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={handleThemeToggle}
+      onTouchEnd={handleTouchEnd}
+      type="button"
     >
-      {theme === 'dark' ? <Sun className="hover:text-primary" /> : <Moon className="hover:text-primary" />}
+      {resolvedTheme === 'dark' ? <Sun className="hover:text-primary" /> : <Moon className="hover:text-primary" />}
       <span className="sr-only">Toggle theme</span>
     </button>
   );

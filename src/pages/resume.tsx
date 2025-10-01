@@ -1,8 +1,11 @@
-import Section from "@/components/Basic/Section.component";
-import BackButton from "@/components/Buttons/BackButton";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 import Link from "next/link";
 import { useEffect } from "react";
+
+// Components
+import Section from "@/components/Basic/Section.component";
+import BackButton from "@/components/Buttons/BackButton";
+import CustomHead from "@/components/CustomHead/CustomHead.component";
+import Layout from "@/components/Layout/Layout.component";
 
 export default function Resume() {
   useEffect(() => {
@@ -10,13 +13,14 @@ export default function Resume() {
   }, []);
   
   return (
-    <div>
-      <div className="max-w-7xl m-auto">
+    <>
+      <CustomHead title="Seb's Resume" description="Seb's resume - Education, work, skills, projects, and contact info" url="https://sebf.xyz/resume" />
+
+      <Layout>
         <BackButton className="fixed top-4 left-4" href={"/#about"} />
-        <ThemeToggle className="fixed top-4 right-4" />
 
         <h1 className="text-6xl font-bold text-center pt-4 pb-2">Sebastien Foussé</h1>
-        <div className="flex space-x-6 justify-center text-primary">
+        <div className="flex flex-wrap justify-center mx-4 gap-x-6 gap-y-2 text-primary">
           <a href="/pdf/SebastienFousse_Resume_Apr2025.pdf" download>Download Condensed Resume</a>
           <a href="mailto:me@sebf.xyz">Email me</a>
           <a
@@ -75,7 +79,7 @@ export default function Resume() {
           <div className="px-9 pt-4 ">
             <div className="flex items-center justify-between w-full">
               <span className="text-left text-lg sm:text-xl font-bold">
-                Rotational Software Developer
+                Software Developer
               </span>
               <div className="flex-grow h-px bg-foreground mx-4" />
               <span className="text-right ml-4">Jul 2024 - Present</span>
@@ -174,7 +178,7 @@ export default function Resume() {
                 NoteMark
               </span>
               <div className="flex-grow h-px bg-foreground mx-4" />
-              <span className="text-right ml-4">Sep - Dec 2023</span>
+              <span className="text-right ml-4">Sep 2024</span>
             </div>
             <div className="flex justify-between w-full">
               <span className="text-left italic">
@@ -252,8 +256,7 @@ export default function Resume() {
             </ul>
           </div>
         </Section>
-
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 }

@@ -53,7 +53,7 @@ export default function ListItem({ title, subtitle, href, random }: Props) {
 
   return (
     <Link
-      className="hover:no-underline hover:font-bold hover:text-primary"
+      className="hover:no-underline hover:font-bold hover:text-primary transition-all duration-200"
       href={href}
       target={isExternal ? "_blank" : "_self"}
     >

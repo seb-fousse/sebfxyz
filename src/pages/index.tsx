@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,12 +12,13 @@ import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
 import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
 import ListItem from "@/components/List/ListItem.component";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
+import CustomHead from "@/components/CustomHead/CustomHead.component";
+import Layout from "@/components/Layout/Layout.component";
 
 // Constants
 import myThingItems from "@/constants/myThings.json";
 import myThoughtItems from "@/constants/myThoughts.json";
-import otherThoughtItems from "@/constants/otherThoughts.json"
+import otherThoughtItems from "@/constants/otherThoughts.json";
 
 // Motion
 import { motion as m } from "motion/react";
@@ -89,46 +89,10 @@ export default function Home() {
   }, [isAtTop]);
 
   return (
-    <div>
-      <Head>
-        {/* TODO: Update header info */}
-        {/* Primary Meta Tags */}
-        <title>Seb Fousse</title>
-        <meta name="title" content="Seb Fousse" />
-        <meta name="robots" content="index, follow" />
-        <meta
-          name="description"
-          content="Sebastien Fousse is a software engineer. His interests include coding, art, photography, and more."
-        />
-        <meta name="author" content="Seb Fousse" />
-        <meta
-          name="keywords"
-          content="seb, fousse, sebastien, sebastian, programming, portfolio, creative, art, design, software"
-        />
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Seb Fousse" />
-        <meta
-          property="og:site_name"
-          data-page-subject="true"
-          content="Seb Fousse"
-        />
-        <meta property="og:url" content="https://sebf.xyz" />
-        <meta
-          property="og:description"
-          name="description"
-          content="Sebastien Fousse is a software engineer. His interests include coding, art, photography, and more."
-        />
-        <meta property="og:image" content="" />{" "}
-        {/* TODO: Add image content here */}
-        {/* Favicon & Device Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <CustomHead title="Seb Fousse" description="Seb's personal site - showcasing work, projects, skills, writing, and contact information." url="https://sebf.xyz" />
 
-      <div className="max-w-7xl m-auto">
-
-        {/* Theme toggle */}
-        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
+      <Layout>
 
         {/* Splash section */}
         <section
@@ -188,7 +152,10 @@ export default function Home() {
                 variants={itemVariants}
               >
                 <h1 className="group">
-                  Seb<span className="inline-block text-primary opacity-10 transition-opacity duration-300 group-hover:opacity-100">astien</span>
+                  Seb
+                  <span className="inline-block text-primary opacity-10 transition-opacity duration-300 group-hover:opacity-100">
+                    astien
+                  </span>
                 </h1>
                 <h1>Foussé</h1>
               </m.div>
@@ -236,12 +203,11 @@ export default function Home() {
         <Section id="about" heading="*about" className="pb-2">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-9 pt-4 pb-8">
             <div>
-              <h4 className="text-2xl font-bold italic pb-2">
-                Who is Seb?
-              </h4>
+              <h4 className="text-2xl font-bold italic pb-2">Who is Seb?</h4>
               <HoverPopup text="Globetrotting multi-citizen">
                 <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
-                  London born-n-bred! American, British, and French passport holder
+                  London born-n-bred! American, British, and French passport
+                  holder
                 </div>
               </HoverPopup>
               ,&nbsp;
@@ -281,16 +247,14 @@ export default function Home() {
                 />
               </HoverPopup>
               ,&nbsp;
-              <HoverPopup text="terminally online" />
-              ,&nbsp;
               <HoverPopup text="music appreciator">
                 <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
                   <RecentlyListened />
                 </div>
               </HoverPopup>
               ,&nbsp;
-              <HoverPopup text="psych-study participant" />
-              , and other things that make me, <span className="italic">me</span>.
+              <HoverPopup text="psych-study participant" />, and other things
+              that make me, <span className="italic">me</span>.
             </div>
             <div>
               <h4 className="text-2xl font-bold italic pb-2">
@@ -298,9 +262,9 @@ export default function Home() {
               </h4>
               <p>
                 It&apos;s my digital scrapbook. A junk yard for me to dump
-                things I make, write, or find online. The internet should be a 
-                terrible mess of custom made pages & projects, and this site aims 
-                to add to that trash pile. Keep the web weird!
+                things I make, write, or find online. The internet should be a
+                terrible mess of custom made pages & projects, and this site
+                aims to add to that trash pile. Keep the web weird!
               </p>
             </div>
             <div>
@@ -314,7 +278,7 @@ export default function Home() {
                 </Link>{" "}
                 might be more relevant for you. It lists my academic and
                 professional accomplishments. Also, sorry about the
-                splash-screen nightmare fuel just above... I promise I have a
+                nightmare fuel just above... I promise I have a
                 more professional headshot somewhere.
               </p>
             </div>
@@ -328,15 +292,19 @@ export default function Home() {
             My projects, work, art, hobbies, and more
           </h4>
           <div className="px-9">
-            <List items={myThingItems} seeMoreHref={"/things"} />
+            <List items={myThingItems}/>
           </div>
           {/* Not my things */}
           <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Other cool stuff I found online
           </h4>
           <div className="px-9">
-            {/* <ListItem title="See all" subtitle="Check it all out" href={""} /> */}
-            <ListItem title="Random" subtitle="Roll the dice" href={"/random"} random/>
+            <ListItem
+              title="Random"
+              subtitle="Roll the dice"
+              href={"/random"}
+              random
+            />
           </div>
         </Section>
 
@@ -347,44 +315,24 @@ export default function Home() {
             Rambles from my soapbox
           </h4>
           <div className="px-9">
-            <List items={myThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
+            <List
+              items={myThoughtItems}
+              maxItems={5}
+              seeMoreHref={"/thoughts"}
+            />
           </div>
           <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Articles, essays, and stories that I enjoyed reading
           </h4>
           <div className="px-9">
-            <List items={otherThoughtItems} maxItems={5} seeMoreHref={"/thoughts"} />
+            <List
+              items={otherThoughtItems}
+              maxItems={5}
+              seeMoreHref={"/thoughts"}
+            />
           </div>
         </Section>
-
-        {/* Footer */}
-        <footer className="w-full py-8 flex justify-center">
-          <div className="flex space-x-6 text-primary">
-            <a href="mailto:me@sebf.xyz">Email</a>
-            <a
-              href="https://github.com/seb-fousse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sebastien-fousse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com/sebf.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-          </div>
-        </footer>
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 }
