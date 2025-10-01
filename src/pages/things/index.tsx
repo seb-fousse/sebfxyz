@@ -6,9 +6,14 @@ import Section from "@/components/Basic/Section.component";
 import List from "@/components/List/List.component";
 import CustomHead from "@/components/CustomHead/CustomHead.component";
 import BackButton from "@/components/Buttons/BackButton";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle.component";
 
 // Constants
 import myThingItems from "@/constants/myThings.json";
+
+// Icons
+import { SquaresIntersect, SquaresUnite } from 'lucide-react';
 
 // Types
 interface ThingItem {
@@ -20,7 +25,7 @@ interface ThingItem {
 
 export default function Things() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [useAndLogic, setUseAndLogic] = useState(false); // false = OR logic, true = AND logic
+  const [filterLogic, setFilterLogic] = useState<string>("or");
 
   // Get all unique tags from the items
   const allTags = useMemo(() => {
@@ -37,18 +42,18 @@ export default function Things() {
       return myThingItems;
     }
     
-    if (useAndLogic) {
-      // AND logic: item must have ALL selected tags
+    if (filterLogic === "and") {
+      // AND logic
       return myThingItems.filter((item: ThingItem) =>
         selectedTags.every(tag => item.tags.includes(tag))
       );
     } else {
-      // OR logic: item must have ANY of the selected tags
+      // OR logic
       return myThingItems.filter((item: ThingItem) =>
         selectedTags.some(tag => item.tags.includes(tag))
       );
     }
-  }, [selectedTags, useAndLogic]);
+  }, [selectedTags, filterLogic]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prev => 
@@ -71,43 +76,30 @@ export default function Things() {
       />
 
       <div className="max-w-7xl m-auto">
-        {/* Back button */}
-        <div className="p-4">
-          <BackButton href="/" className="" />
-        </div>
+        {/* Fixed components */}
+        <BackButton className="fixed top-5 left-5 z-10" href={'/'} />
+        <ThemeToggle className="fixed top-5 right-5 z-10"/>
 
         {/* Main section */}
         <Section id="things" heading="*things" className="pb-2">
           <div className="px-9 pt-4 pb-8">
             {/* Filter section */}
             <div className="mb-8">
-              <h4 className="text-2xl font-bold italic pb-4">Filter by tags</h4>
-              
-              {/* Logic toggle */}
-              <div className="mb-4 p-4 bg-muted/30 rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium">Filter logic:</span>
-                  <button
-                    onClick={() => setUseAndLogic(!useAndLogic)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      useAndLogic ? 'bg-primary' : 'bg-muted'
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        useAndLogic ? 'translate-x-6' : 'translate-x-1'
-                      }`}
-                    />
-                  </button>
-                </div>
-                <div className="flex justify-between text-xs text-muted-foreground">
-                  <span className={!useAndLogic ? 'text-primary font-medium' : ''}>
-                    OR - Show items with ANY selected tag
-                  </span>
-                  <span className={useAndLogic ? 'text-primary font-medium' : ''}>
-                    AND - Show items with ALL selected tags
-                  </span>
-                </div>
+              <div className="flex items-center justify-between">
+                <h4 className="text-2xl font-bold italic pb-4">Filter by tags</h4> 
+                <ToggleGroup
+                  type="single" 
+                  size="sm"
+                  value={filterLogic} 
+                  onValueChange={(value) => setFilterLogic(value || "or")}
+                >
+                  <ToggleGroupItem value="or" aria-label="Show items with OR selected tag" className="text-sm">
+                    <SquaresUnite className="h-4 w-4" /> OR
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="and" aria-label="Show items with AND selected tags">
+                    <SquaresIntersect className="h-4 w-4" /> AND
+                  </ToggleGroupItem>
+                </ToggleGroup>
               </div>
               
               {/* Filter pills */}
@@ -143,7 +135,7 @@ export default function Things() {
                 {selectedTags.length > 0 && (
                   <span>
                     {' '}matching {selectedTags.length} selected tag{selectedTags.length > 1 ? 's' : ''} 
-                    {' '}({useAndLogic ? 'ALL' : 'ANY'} logic)
+                    {' '}({filterLogic.toUpperCase()} logic)
                   </span>
                 )}
               </div>
