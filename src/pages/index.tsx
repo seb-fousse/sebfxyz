@@ -292,14 +292,13 @@ export default function Home() {
             My projects, work, art, hobbies, and more
           </h4>
           <div className="px-9">
-            <List items={myThingItems} seeMoreHref={"/things"} />
+            <List items={myThingItems}/>
           </div>
           {/* Not my things */}
           <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
             Other cool stuff I found online
           </h4>
           <div className="px-9">
-            {/* <ListItem title="See all" subtitle="Check it all out" href={""} /> */}
             <ListItem
               title="Random"
               subtitle="Roll the dice"

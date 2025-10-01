@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import ListItem from "./ListItem.component";
+import Link from "next/link";
 
 interface ListItemProps {
   title: string;
@@ -14,7 +16,7 @@ interface ListProps {
   seeMoreHref?: string;
 }
 
-export default function List({ items, maxItems }: ListProps) {
+export default function List({ items, maxItems, seeMoreLabel, seeMoreHref }: ListProps) {
 
   return (
     <div>
