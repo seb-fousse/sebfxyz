@@ -16,7 +16,7 @@ export default function Post({ postData }: { postData: IPostData }) {
       <BackButton className="fixed top-4 left-4 z-1000" href={'/#thoughts'} />
       <ThemeToggle className="fixed top-4 right-4 z-1000"/>
 
-      <div className="max-w-xl mx-4 mb-16">
+      <div className="max-w-xl mx-auto px-4 mb-16">
         <div className='font-bold text-6xl mb-4 mt-12 sm:mt-4'>{postData.title}</div>
         <div className='italic'>{postData.date}</div>
         <div className='prose mt-4'>
