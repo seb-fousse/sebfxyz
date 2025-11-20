@@ -8,20 +8,24 @@ export default function RecentlyListened() {
   const { data, error } = useSWR("/api/stats/recently-played", fetcher);
 
   if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data || data.length === 0) return <div>Loading...</div>;
+
+  const recentlyPlayed = data[0];
 
   return (
     <div className="flex">
-      <Image
-        src={data[0].coverImage.url}
-        alt={`Album cover for ${data[0].artist} - ${data[0].title}`}
-        width={80}
-        height={80}
-      />
+      {recentlyPlayed.coverImage && recentlyPlayed.coverImage.url && (
+        <Image
+          src={recentlyPlayed.coverImage.url}
+          alt={`Album cover for ${recentlyPlayed.artist} - ${recentlyPlayed.title}`}
+          width={80}
+          height={80}
+        />
+      )}
       <div className="pl-2 flex flex-col justify-between">
         <div>
-          <div className="font-black">{data[0].title}</div>
-          <div className="font-base">{data[0].artist}</div>
+          <div className="font-black">{recentlyPlayed.title}</div>
+          <div className="font-base">{recentlyPlayed.artist}</div>
         </div>
         <h4 className="text-xs font-extralight italic">
           My most recently played track
