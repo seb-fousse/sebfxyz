@@ -288,16 +288,21 @@ export default function Home() {
         {/* Things section */}
         <Section id="things" heading="*things" className="pb-2">
           {/* My things */}
-          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
+          <h2 className="text-3xl font-bold italic px-9 pt-4 pb-3">
             My projects, work, art, hobbies, and more
-          </h4>
+          </h2>
           <div className="px-9">
-            <List items={myThingItems}/>
+            <List 
+              items={myThingItems}
+              maxItems={5}
+              seeMoreLabel="View all my things"
+              seeMoreHref={"/things"}
+            />
           </div>
           {/* Not my things */}
-          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
+          <h2 className="text-3xl font-bold italic px-9 pt-4 pb-3">
             Other cool stuff I found online
-          </h4>
+          </h2>
           <div className="px-9">
             <ListItem
               title="Random"
@@ -311,19 +316,20 @@ export default function Home() {
         {/* Thoughts section */}
         <Section id="thoughts" heading="*thoughts" className="pb-2">
           {/* Subtitle */}
-          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
+          <h2 className="text-3xl font-bold italic px-9 pt-4 pb-3">
             Rambles from my soapbox
-          </h4>
+          </h2>
           <div className="px-9">
             <List
               items={myThoughtItems}
               maxItems={5}
+              seeMoreLabel="View all my thoughts"
               seeMoreHref={"/thoughts"}
             />
           </div>
-          <h4 className="text-2xl font-bold italic px-9 pt-4 pb-3">
+          <h2 className="text-3xl font-bold italic px-9 pt-4 pb-3">
             Articles, essays, and stories that I enjoyed reading
-          </h4>
+          </h2>
           <div className="px-9">
             <List
               items={otherThoughtItems}

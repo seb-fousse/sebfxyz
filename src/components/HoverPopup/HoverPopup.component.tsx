@@ -19,7 +19,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ text, children }) => {
 
   return (
     <span
-      className={`relative inline-block ${children ? 'cursor-none' : 'cursor-text'}`}
+      className={`relative inline-block ${children ? 'cursor-none underline decoration-wavy decoration-1' : 'cursor-text'}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

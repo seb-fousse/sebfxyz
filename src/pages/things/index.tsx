@@ -15,12 +15,12 @@ import myThingItems from "@/constants/myThings.json";
 import { SquaresIntersect, SquaresUnite } from 'lucide-react';
 
 // Types
-interface ThingItem {
+type ThingItem = {
   title: string;
   subtitle: string;
   href: string;
   tags: string[];
-}
+};
 
 export default function Things() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -171,4 +171,4 @@ export default function Things() {
       </Layout>
     </>
   );
-}
+};
