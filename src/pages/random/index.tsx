@@ -18,7 +18,7 @@ export default function RandomRedirect() {
     isActive.current = true; // component is mounted
     let interval = 20;
     let count = 0;
-    const maxCount = 60;
+    const maxCount = 40;
     let finalIndex = index;
     
     
@@ -41,7 +41,7 @@ export default function RandomRedirect() {
             if (isActive.current && router.pathname === '/random') {
               router.push(things[finalIndex]["href"]);
             }
-          }, 2000);
+          }, 3000);
         }
       }, interval);
     };
