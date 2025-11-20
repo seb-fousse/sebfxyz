@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ListItem from "./ListItem.component";
 
 interface ListItemProps {
@@ -14,11 +15,22 @@ interface ListProps {
   seeMoreHref?: string;
 }
 
-export default function List({ items, maxItems }: ListProps) {
+export default function List({ items, maxItems, seeMoreLabel, seeMoreHref }: ListProps) {
 
+  const listItems = maxItems ? items.slice(0, maxItems) : items;
+  const showSeeMore = seeMoreLabel && seeMoreHref && listItems.length < items.length;
+
+  const seeMore = showSeeMore ? (
+    <div className="py-1">
+      <Link href={seeMoreHref} className="text-primary font-mono hover:underline">
+        {seeMoreLabel}
+      </Link>
+    </div>
+  ) : null;
+  
   return (
     <div>
-      {(maxItems ? items.slice(0, maxItems) : items).map((item, index) => (
+      {listItems.map((item, index) => (
         <ListItem
           title={item.title}
           subtitle={item.subtitle}
@@ -26,6 +38,7 @@ export default function List({ items, maxItems }: ListProps) {
           key={index}
         />
       ))}
+      {seeMore}
     </div>
   );
 };

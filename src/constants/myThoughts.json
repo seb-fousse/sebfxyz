@@ -2,11 +2,13 @@
   {
     "title": "Indulgence",
     "subtitle": "2025/04/26",
-    "href": "/thoughts/indulgence"
+    "href": "/thoughts/indulgence",
+    "tags": ["creative writing"]
   },
   {
     "title": "Goûter",
     "subtitle": "2025/04/16",
-    "href": "/thoughts/gouter"
+    "href": "/thoughts/gouter",
+    "tags": ["creative writing"]
   }
 ]
