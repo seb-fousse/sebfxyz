@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next"
 
 const variants = {
   initial: { opacity: 0 },
@@ -43,12 +44,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <AnimatePresence mode="wait">
-        <motion.div key={router.route} variants={variants} initial="initial" animate="animate" exit="exit">
-          <Component {...pageProps} />
-        </motion.div>
-      </AnimatePresence>
-    </ThemeProvider>
+    <>
+      <Analytics />
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <AnimatePresence mode="wait">
+          <motion.div key={router.route} variants={variants} initial="initial" animate="animate" exit="exit">
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
+      </ThemeProvider>
+    </>
   );
 }
