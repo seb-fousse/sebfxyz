@@ -27,13 +27,13 @@
     "title": "Peru 2024",
     "subtitle": "Photos taken on a 5 day hike to Machu Picchu",
     "href": "/things/peru-2024/",
-    "tags": ["art", "photo"]
+    "tags": ["art", "photo", "travel"]
   },
   {
     "title": "Vietnam 2023",
     "subtitle": "Photos taken on a trip from Hanoi to Ho Chi Minh",
     "href": "/things/vietnam-2023/",
-    "tags": ["art", "photo"]
+    "tags": ["art", "photo", "travel"]
   },
   {
     "title": "35mm B&W Film",
@@ -51,18 +51,18 @@
     "title": "Hiking With Dad",
     "subtitle": "Dad-themed chatbot that provides a packing list for a hike",
     "href": "https://github.com/seb-fousse/hiking-with-dad",
-    "tags": ["javascript", "tech"]
+    "tags": ["javascript", "react", "tech"]
   },
   {
     "title": "BeanKrypt",
     "subtitle": "Steganography using Python & Flask",
     "href": "https://github.com/seb-fousse/BeanKrypt",
-    "tags": ["python", "tech"]
+    "tags": ["python", "flask", "tech"]
   },
   {
     "title": "SubletSwap",
     "subtitle": "Web-app for students seeking sublets",
     "href": "/things/subletswap",
-    "tags": ["javascript", "tech"]
+    "tags": ["javascript", "next.js", "tech"]
   }
 ]
