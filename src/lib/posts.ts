@@ -9,7 +9,7 @@ const postsDirectory = path.join(process.cwd(), 'src/posts');
 export function getSortedPostsData() {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.md$/, '').replace(/_/g, '-');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -28,13 +28,15 @@ export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => ({
     params: {
-      id: fileName.replace(/\.md$/, ''),
+      id: fileName.replace(/\.md$/, '').replace(/_/g, '-'),
     },
   }));
 }
 
 export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+  // Convert dashes back to underscores to match the actual filename
+  const fileName = id.replace(/-/g, '_');
+  const fullPath = path.join(postsDirectory, `${fileName}.md`);
 
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Post not found: ${id}`);
