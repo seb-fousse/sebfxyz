@@ -153,7 +153,7 @@ export default function Things() {
             {/* Items list */}
             <div>
               {filteredItems.length > 0 ? (
-                <List items={filteredItems} />
+                <List items={filteredItems} expandedListItems={true} />
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
                   <p>No items match the selected filters.</p>
