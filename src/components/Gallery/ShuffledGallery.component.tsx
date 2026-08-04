@@ -17,7 +17,6 @@ import { X } from "lucide-react";
 const fullConfig = resolveConfig(tailwindConfig);
 
 function getRandomCoordinate(width: number, height: number, imageSize: number, padX: number, padY: number) {
-  console.log(padX, padY);
   return {
     x: Math.floor(Math.random() * (width - 2 * padX - imageSize) + padX),
     y: Math.floor(Math.random() * (height - 2 * padY - imageSize) + padY),
@@ -55,6 +54,10 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
     };
   
     window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
   }, []);
 
   useEffect(() => {
@@ -114,11 +117,9 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
     const target = e.target as HTMLElement;
     const index = Number(target.getAttribute("data-draggable-item-index"));
     if (itemTransform.current == target.style.transform) {
-      // If mouse down and mouse up happen at the same location
-      console.log("clicked", index, itemTransform.current);
+      // If mouse down and mouse up happen at the same location, treat it as a
+      // click rather than a drag
       setImageForModal(data[index]);
-    } else {
-      console.log("dragged", index);
     }
   };
 
@@ -206,7 +207,6 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
                 height={imageForModal.height}
                 src={imageForModal.src}
                 alt={imageForModal.alt}
-                layout="intrinsic"
               />
               <div>
                 <span className="font-bold">{imageForModal.title ? imageForModal.title + ' - ' : ''}</span>

@@ -18,12 +18,6 @@
     "tags": ["art", "collage", "painting"]
   },
   {
-    "title": "Stereoscopic Images",
-    "subtitle": "Taken on Nimslo and Nishika N8000",
-    "href": "/things/stereoscopic-images",
-    "tags": ["art", "35mm", "photo"]
-  },
-  {
     "title": "Peru 2024",
     "subtitle": "Photos taken on a 5 day hike to Machu Picchu",
     "href": "/things/peru-2024/",
@@ -62,7 +56,13 @@
   {
     "title": "SubletSwap",
     "subtitle": "Web-app for students seeking sublets",
-    "href": "/things/subletswap",
+    "href": "https://github.com/seb-fousse/SubletSwap",
     "tags": ["javascript", "next.js", "tech"]
+  },
+  {
+    "title": "seb.fousse.net / sebf.xyz",
+    "subtitle": "Portfolio built with Next.js, Tailwind, & TS",
+    "href": "https://github.com/seb-fousse/sebfxyz",
+    "tags": ["javascript", "typescript", "next.js", "tech"]
   }
 ]

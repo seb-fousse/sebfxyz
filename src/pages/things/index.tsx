@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 // Components
 import Section from "@/components/Basic/Section.component";
@@ -25,7 +25,6 @@ type ThingItem = {
 export default function Things() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filterLogic, setFilterLogic] = useState<string>("or");
-  const [resultsText, setResultsText] = useState<string>("");
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -53,19 +52,17 @@ export default function Things() {
     }
   }, [selectedTags, filterLogic]);
 
-  useEffect(() => {
+  const resultsText = useMemo(() => {
     const showingXofYItems = `Showing ${filteredItems.length} of ${myThingItems.length} items`;
     if (selectedTags.length === 1) {
       const matchingSingleTag = 'matching the 1 selected tag';
-      setResultsText(`${showingXofYItems} ${matchingSingleTag}`);
+      return `${showingXofYItems} ${matchingSingleTag}`;
     }
-    else if (selectedTags.length > 1) {
+    if (selectedTags.length > 1) {
       const matchingXofYTags = `matching ${filterLogic === "and" ? "all" : "any"} of the ${selectedTags.length} selected tags`;
-      setResultsText(`${showingXofYItems} ${matchingXofYTags}`);
+      return `${showingXofYItems} ${matchingXofYTags}`;
     }
-    else {
-      setResultsText(showingXofYItems);
-    }
+    return showingXofYItems;
   }, [filteredItems, selectedTags, filterLogic]);
 
   const toggleTag = (tag: string) => {
@@ -153,7 +150,7 @@ export default function Things() {
             {/* Items list */}
             <div>
               {filteredItems.length > 0 ? (
-                <List items={filteredItems} />
+                <List items={filteredItems} expandedListItems={true} />
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
                   <p>No items match the selected filters.</p>

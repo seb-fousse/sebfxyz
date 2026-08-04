@@ -10,8 +10,12 @@ const ThemeToggle = ({ className = "" }: Props) => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch
+  // Avoid hydration mismatch. The resolved theme is only known on the client,
+  // so the first client render has to match the server's before we can show
+  // the real icon. This is the documented next-themes pattern; the setState is
+  // deliberately in an effect so it runs after hydration, not during it.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

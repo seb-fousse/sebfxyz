@@ -11,7 +11,6 @@ interface IThing {
 export default function RandomRedirect() {
   const router = useRouter();
   const [currentThing, setCurrentThing] = useState<IThing>({title: "", subtitle: "", href:""});
-  const [index, setIndex] = useState(Math.floor(Math.random()*things.length));
   const isActive = useRef(true);
 
   useEffect(() => {
@@ -19,39 +18,37 @@ export default function RandomRedirect() {
     let interval = 20;
     let count = 0;
     const maxCount = 40;
-    let finalIndex = index;
-    
-    
+    let timer: ReturnType<typeof setTimeout>;
+    // Seeded here rather than in useState so the random pick happens on the
+    // client only, and never differs between server and client render
+    let index = Math.floor(Math.random() * things.length);
+
     const spin = () => {
-      setTimeout(() => {
-        setIndex((prevIndex) => {
-          const newIndex = (prevIndex + 1) % things.length;
-          setCurrentThing(things[newIndex]);
-          finalIndex = newIndex;
-          return newIndex;
-        });
+      timer = setTimeout(() => {
+        index = (index + 1) % things.length;
+        setCurrentThing(things[index]);
 
         count++;
-        
+
         if (count < maxCount) {
           interval *= (count < maxCount - 5) ? 1.05 : 1.2;
           spin();
         } else {
-          setTimeout(() => {
+          timer = setTimeout(() => {
             if (isActive.current && router.pathname === '/random') {
-              router.push(things[finalIndex]["href"]);
+              router.push(things[index]["href"]);
             }
           }, 3000);
         }
       }, interval);
     };
-    
+
     spin();
-    
+
     return () => {
       isActive.current = false; // component is unmounted or route changed
+      clearTimeout(timer);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   return (

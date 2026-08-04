@@ -6,6 +6,7 @@ interface ListItemProps {
   subtitle: string;
   date?: string;
   href: string;
+  tags?: string[];
 }
 
 interface ListProps {
@@ -13,9 +14,10 @@ interface ListProps {
   maxItems?: number;
   seeMoreLabel?: string;
   seeMoreHref?: string;
+  expandedListItems?: boolean;
 }
 
-export default function List({ items, maxItems, seeMoreLabel, seeMoreHref }: ListProps) {
+export default function List({ items, maxItems, seeMoreLabel, seeMoreHref, expandedListItems }: ListProps) {
 
   const listItems = maxItems ? items.slice(0, maxItems) : items;
   const showSeeMore = seeMoreLabel && seeMoreHref && listItems.length < items.length;
@@ -35,7 +37,9 @@ export default function List({ items, maxItems, seeMoreLabel, seeMoreHref }: Lis
           title={item.title}
           subtitle={item.subtitle}
           href={item.href}
+          tags={item.tags}
           key={index}
+          expanded={expandedListItems}
         />
       ))}
       {seeMore}

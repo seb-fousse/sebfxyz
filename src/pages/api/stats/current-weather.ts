@@ -42,7 +42,13 @@ export default async function handler(
         description: weatherData.weather[0].description,
       };
 
-      console.log("Success fetching weather");
+      // Brooklyn's weather does not change every request, and this route is
+      // publicly reachable, so let the CDN absorb the traffic rather than
+      // burning a function invocation and an OpenWeather call per visitor
+      res.setHeader(
+        "Cache-Control",
+        "public, s-maxage=600, stale-while-revalidate=1800"
+      );
       return res.status(200).json(dataTrimmed);
     } catch (error) {
       console.error("Error fetching weather:", (error as Error).message);

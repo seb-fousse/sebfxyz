@@ -24,9 +24,13 @@ export default function FilmColor() {
 
   // Update container width and viewport height on mount and window resize
   useEffect(() => {
+    // Captured once so cleanup detaches from the same node the effect observed,
+    // rather than whatever containerRef points at by the time it runs
+    const container = containerRef.current
+
     const updateDimensions = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.clientWidth)
+      if (container) {
+        setContainerWidth(container.clientWidth)
       }
       setViewportHeight(window.innerHeight)
     }
@@ -36,8 +40,8 @@ export default function FilmColor() {
 
     // Set up resize observer for container width
     const resizeObserver = new ResizeObserver(updateDimensions)
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
+    if (container) {
+      resizeObserver.observe(container)
     }
 
     // Listen for window resize for viewport height
@@ -45,9 +49,6 @@ export default function FilmColor() {
 
     // Clean up
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
-      }
       resizeObserver.disconnect()
       window.removeEventListener("resize", updateDimensions)
     }
@@ -69,7 +70,7 @@ export default function FilmColor() {
       <CustomHead title="35mm Color Film" description="Photos taken on Contax RTS II, Pentax K1000, and various point and shoots. Film used: Portra 400, Fujifilm Superia 400, or Kodak Gold 200." url="https://sebf.xyz/things/35mm-color" />  
       <div className="max-w-full w-full mx-auto items-center px-4 flex flex-col" ref={containerRef}>
         <BackButton className="fixed top-4 left-4 z-10" href={'/#things'} />
-        <ThemeToggle className="fixed top-4 right-4 z-1000"/>
+        <ThemeToggle className="fixed top-4 right-4 z-[1000]"/>
 
         <h1 className="text-center font-bold text-4xl md:text-6xl pt-2 md:py-2 lowercase">
           35mm film

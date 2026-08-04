@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 interface Props {
   title: string;
   subtitle: string;
   href: string;
+  expanded?: boolean;
   random?: boolean;
+  tags?: string[];
 }
 
 const generateWaveString = (length: number, random?: boolean) => {
@@ -22,7 +24,7 @@ const generateWaveString = (length: number, random?: boolean) => {
 const generateLineString = (length: number) =>
   Array.from({ length }, () => "-").join("");
 
-export default function ListItem({ title, subtitle, href, random }: Props) {
+export default function ListItem({ title, subtitle, href, expanded, random, tags }: Props) {
   const [waveText, setWaveText] = useState<string>(generateLineString(128));
   const [isHovering, setIsHovering] = useState(false);
 
@@ -33,11 +35,11 @@ export default function ListItem({ title, subtitle, href, random }: Props) {
 
     if (isHovering) {
       scrambleInterval = window.setInterval(() => {
-        random
-          ? setWaveText(generateWaveString(128, random))
-          : setWaveText(
-              (prevText) => prevText.slice(-1) + prevText.slice(0, -1)
-            );
+        if (random) {
+          setWaveText(generateWaveString(128, random));
+        } else {
+          setWaveText((prevText) => prevText.slice(-1) + prevText.slice(0, -1));
+        }
       }, 33); // approx 30fps
     } else if (scrambleInterval !== undefined) {
       window.clearInterval(scrambleInterval);
@@ -68,12 +70,26 @@ export default function ListItem({ title, subtitle, href, random }: Props) {
         transition={{ type: "spring", stiffness: 200, damping: 50 }}
       >
         {/* Full-width view */}
-        <div className="hidden md:flex items-center justify-between w-full">
-          <span className="text-base text-nowrap mr-[10px]">{title}</span>
-          <span className="flex-grow text-center text-base whitespace-nowrap overflow-hidden">
+        <div className="hidden md:flex items-start justify-between w-full">
+          <span className="text-base text-nowrap mr-[10px] pt-0.5">{title}</span>
+          <span className="flex-grow text-center text-base whitespace-nowrap overflow-hidden pt-0.5">
             {waveText || generateLineString(128)}
           </span>
-          <span className="text-base text-nowrap ml-[10px]">{subtitle}</span>
+          <div className="flex flex-col items-end ml-[10px]">
+            <span className="text-base text-nowrap">{subtitle}</span>
+            {expanded && tags && tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-1.5 justify-end">
+                {tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-2 py-0.5 rounded-full text-xs font-medium border border-primary text-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Mobile view */}

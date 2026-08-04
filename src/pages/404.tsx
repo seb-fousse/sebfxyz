@@ -41,11 +41,11 @@ export default function Custom404() {
   };
 
   return (
-    <div className="w-screen h-screenover flow-hidden">
-      <BackButton className="fixed top-4 left-4 z-1000" href={'/'} />
-      <ThemeToggle className="fixed bottom-4 right-4 z-1000"/>
+    <div className="w-screen h-screen overflow-hidden">
+      <BackButton className="fixed top-4 left-4 z-[1000]" href={'/'} />
+      <ThemeToggle className="fixed bottom-4 right-4 z-[1000]"/>
 
-      <div className="absolute top-[50%] left-[50%] translate-[50%] -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
         <h1 className="text-4xl font-bold text-center mt-10">404 - Page Not Found</h1>
         <p className="text-center mb-10">
           What were you looking for?
