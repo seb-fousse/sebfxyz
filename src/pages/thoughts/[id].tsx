@@ -13,7 +13,7 @@ export default function Post({ postData }: { postData: IPostData }) {
   
   return (
     <Layout maxWidth="max-w-xl">
-      <BackButton className="fixed top-4 left-4 z-1000" href={'/#thoughts'} />
+      <BackButton className="fixed top-4 left-4 z-[1000]" href={'/#thoughts'} />
 
       <div className="px-4 mb-16">
         <div className='font-bold text-6xl mb-4 mt-12 sm:mt-4'>{postData.title}</div>

@@ -55,6 +55,10 @@ const ImageShuffle = ({ children, data, delay }: ImageShuffleProps) => {
     };
   
     window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
   }, []);
 
   useEffect(() => {

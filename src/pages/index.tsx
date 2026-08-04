@@ -10,7 +10,6 @@ import Section from "@/components/Basic/Section.component";
 import List from "@/components/List/List.component";
 import HoverPopup from "@/components/HoverPopup/HoverPopup.component";
 import LocalWeather from "@/components/Weather/LocalWeather.component";
-import RecentlyListened from "@/components/RecentlyListened/RecentlyListened";
 import ListItem from "@/components/List/ListItem.component";
 import CustomHead from "@/components/CustomHead/CustomHead.component";
 import Layout from "@/components/Layout/Layout.component";
@@ -247,11 +246,7 @@ export default function Home() {
                 />
               </HoverPopup>
               ,&nbsp;
-              <HoverPopup text="music appreciator">
-                <div className="p-2 bg-card text-card-foreground rounded-sm drop-shadow-lg">
-                  <RecentlyListened />
-                </div>
-              </HoverPopup>
+              <HoverPopup text="music appreciator" />
               ,&nbsp;
               <HoverPopup text="psych-study participant" />, and other things
               that make me, <span className="italic">me</span>.
@@ -320,21 +315,21 @@ export default function Home() {
             Rambles from my soapbox
           </h2>
           <div className="px-9">
+            {/* TODO: restore seeMoreHref="/thoughts" once that page exists */}
             <List
               items={myThoughtItems}
               maxItems={5}
               seeMoreLabel="View all my thoughts"
-              seeMoreHref={"/thoughts"}
             />
           </div>
           <h2 className="text-3xl font-bold italic px-9 pt-4 pb-3">
             Articles, essays, and stories that I enjoyed reading
           </h2>
           <div className="px-9">
+            {/* TODO: restore seeMoreHref="/thoughts" once that page exists */}
             <List
               items={otherThoughtItems}
               maxItems={5}
-              seeMoreHref={"/thoughts"}
             />
           </div>
         </Section>
