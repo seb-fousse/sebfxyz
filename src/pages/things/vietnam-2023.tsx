@@ -24,9 +24,13 @@ export default function Vietnam() {
 
   // Update container width and viewport height on mount and window resize
   useEffect(() => {
+    // Captured once so cleanup detaches from the same node the effect observed,
+    // rather than whatever containerRef points at by the time it runs
+    const container = containerRef.current
+
     const updateDimensions = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.clientWidth)
+      if (container) {
+        setContainerWidth(container.clientWidth)
       }
       setViewportHeight(window.innerHeight)
     }
@@ -36,8 +40,8 @@ export default function Vietnam() {
 
     // Set up resize observer for container width
     const resizeObserver = new ResizeObserver(updateDimensions)
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
+    if (container) {
+      resizeObserver.observe(container)
     }
 
     // Listen for window resize for viewport height
@@ -45,9 +49,6 @@ export default function Vietnam() {
 
     // Clean up
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
-      }
       resizeObserver.disconnect()
       window.removeEventListener("resize", updateDimensions)
     }
