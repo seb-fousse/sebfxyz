@@ -35,11 +35,11 @@ export default function ListItem({ title, subtitle, href, expanded, random, tags
 
     if (isHovering) {
       scrambleInterval = window.setInterval(() => {
-        random
-          ? setWaveText(generateWaveString(128, random))
-          : setWaveText(
-              (prevText) => prevText.slice(-1) + prevText.slice(0, -1)
-            );
+        if (random) {
+          setWaveText(generateWaveString(128, random));
+        } else {
+          setWaveText((prevText) => prevText.slice(-1) + prevText.slice(0, -1));
+        }
       }, 33); // approx 30fps
     } else if (scrambleInterval !== undefined) {
       window.clearInterval(scrambleInterval);

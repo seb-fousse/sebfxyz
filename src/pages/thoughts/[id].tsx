@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         postData,
       },
     };
-  } catch (error) {
+  } catch {
     return {
       notFound: true
     };
