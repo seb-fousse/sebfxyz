@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import "../styles/globals.css";

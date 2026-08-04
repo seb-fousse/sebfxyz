@@ -8,16 +8,25 @@ interface Props {
     href: string;
 }
 
-export default function ExplodingTextLink({ text, href }: Props) {
+// Scatters the letters by a stable amount between -5000ms and 0ms. This is
+// hashed rather than random so the server and client render the same delays —
+// Math.random() here produced a hydration mismatch on every letter.
+const scatterDelay = (text: string, index: number) => {
+    let hash = (index + 1) * 2654435761;
+    for (let i = 0; i < text.length; ++i) {
+        hash = Math.imul(hash ^ text.charCodeAt(i), 16777619);
+    }
+    return -((hash >>> 0) % 5001);
+};
 
-    const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
+export default function ExplodingTextLink({ text, href }: Props) {
 
     const letters = text.split(""); // Split text into array of characteres
     const lettersAndDelay = []
 
-    // Push an object to lettersAndDelay with a letter, random delay, and fixed delay
+    // Push an object to lettersAndDelay with a letter, scattered delay, and fixed delay
     for (let i = 0; i < letters.length; ++i) {
-        const rd = `${rand(-5000, 0)}ms`
+        const rd = `${scatterDelay(text, i)}ms`
         const fd = `${i * 1000 }ms`
         lettersAndDelay.push({letter: letters[i], randomDelay: rd, fixedDelay: fd});
     }

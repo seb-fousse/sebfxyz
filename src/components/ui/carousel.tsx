@@ -109,6 +109,9 @@ const Carousel = React.forwardRef<
         return
       }
 
+      // Syncs initial state from embla, which is an external store. Generated
+      // by shadcn/ui; kept as-is so the component stays regenerable.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       onSelect(api)
       api.on("reInit", onSelect)
       api.on("select", onSelect)
